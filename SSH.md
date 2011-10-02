@@ -2,14 +2,16 @@
 `sudo nano /etc/ssh/sshd_config`
 
 Disable root login and enable login only for certain users
-Authentication:
+
+	Authentication:
 	LoginGraceTime 120
 	PermitRootLogin no
 	AllowUsers jl eggdrop jore
 	StrictModes yes
 
 Change SSH port from 22 to something else
-What ports, IPs and protocols we listen for
+	
+	What ports, IPs and protocols we listen for
 	Port 14666
 
 ## SOCKS5 proxy
@@ -49,7 +51,8 @@ To generate an id_rsa.pub file, open up a terminal and type the following:
 `ssh-keygen -t rsa`
 
 Just press ‘enter’ for all of the following prompts:
-Generating public/private rsa key pair.
+	
+	Generating public/private rsa key pair.
 	Enter file in which to save the key (/home/user/.ssh/id_rsa):
 	Enter passphrase (empty for no passphrase):
 	Enter same passphrase again:
