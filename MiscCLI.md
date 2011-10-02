@@ -6,20 +6,11 @@
 
 Compress a file -
 
-`tar -czf whatever.tar foldername`
+`tar -czvf whatever.tar foldername`
 
 Untar a file -
 
-`tar -xf whatever.tar`
-
-Tar options -
-	-c = create
-	-f = read to/from the named file
-	-t = list contents of .tar file
-	-r = append to a .tar file
-	-v = verbose
-	-x = extract contents of .tar file
-	-z = compress files
+`tar -xvf whatever.tar`
 
 ## Change timezone -
 
