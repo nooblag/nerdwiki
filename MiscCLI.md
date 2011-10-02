@@ -13,7 +13,7 @@ Untar a file -
 `tar -xf whatever.tar`
 
 Tar options -
-	
+```	
 	-c = create
 	-f = read to/from the named file
 	-t = list contents of .tar file
@@ -21,6 +21,7 @@ Tar options -
 	-v = verbose
 	-x = extract contents of .tar file
 	-z = compress files
+```
 
 ## Change timezone -
 
@@ -44,4 +45,4 @@ Search in home directories -
 
 ## Play a random episode of Seinfeld in VLC fullscreen
 
-`alias randomsein="find /mnt/media -name "Seinfeld*.avi" | sort -R | head -n1 | xargs -d '\n' vlc -f"`
+`find /mnt/media -name "Seinfeld*.avi" | sort -R | head -n1 | xargs -d '\n' vlc -f`
