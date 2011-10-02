@@ -41,3 +41,7 @@ To go back to directory you 'pushd' -
 Search in home directories -
 
 `find /home -name 'hello.c'`
+
+## Play a random episode of Seinfeld in VLC fullscreen
+
+`alias randomsein="find /mnt/media -name "Seinfeld*.avi" | sort -R | head -n1 | xargs -d '\n' vlc -f"`
