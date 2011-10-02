@@ -6,7 +6,7 @@
 
 Useful for finding what files are taking up the most space.
 
-`du -k | sort -nr`
+`du -h | sort -nr`
 
 ## List open ports and the processes using them
 
