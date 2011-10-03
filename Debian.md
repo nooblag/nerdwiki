@@ -36,6 +36,10 @@ Comment out CD-ROM from apt sources list, and add Multimedia repo -
 
 Add `deb http://www.debian-multimedia.org stable main non-free`
 
+Install screensavers -
+
+`aptitude install xscreensaver-gl xscreensaver-gl-extra xscreensaver`
+
 * Edit hostfile
 * Disable IPv6
 * Install NVidia
