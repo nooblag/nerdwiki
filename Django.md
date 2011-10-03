@@ -24,6 +24,8 @@
 
 `nano settings.py`
 
+if using sqlite3, put path to database file. Be sure to `mkdir` the directory so `syncdb` can make the database file.
+
 ## Setup database
 
 `python manage.py syncdb`
