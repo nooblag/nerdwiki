@@ -24,3 +24,16 @@ Tested with Debian Squeeze 6 partition and Debian Lenny 5 live CD using Rescue m
 * `update-grub`
 
 Then reboot.
+
+## Add Windows 7 partition to grub menu
+
+Navigate to `/etc/grub.d` directory. Create new file named `95_windows` or similar. Insert -
+
+	menuentry "Windows 7" {
+	set root=(hd0,1)
+	chainloader +1
+	} 
+
+In this example, /dev/sda2 is the partition we want to boot. Grub starts hd numbers at 0.
+
+Find partition with `cat /proc/partitions` or `fdisk -l`
