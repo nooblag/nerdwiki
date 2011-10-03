@@ -3,3 +3,16 @@
 The primary configuration file for changing menu display settings is /etc/default/grub.
 
 There are multiple files for configuring the menu - /etc/default/grub mentioned above, and all the files in the /etc/grub.d/ directory. 
+
+## Reinstall grub from live CD
+
+Tested with Debian squeeze 6 partition and Debian lenny 5 live CD using Rescue mode. MUST be same architecture (ie 32 or 64bit)
+
+* Mount root partition from live CD and open a shell
+* `aptitude install grub2`
+* `grub-mkdevicemap`
+* Find partition to install to with `cat /proc/partitions` or use `mount` to see what's already mounted
+* `grub-install /dev/sdb`
+* `update-grub`
+
+Then reboot.
