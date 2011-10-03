@@ -37,3 +37,5 @@ Navigate to `/etc/grub.d` directory. Create new file named `95_windows` or simil
 In this example, /dev/sda2 is the partition we want to boot. Grub starts hd numbers at 0.
 
 Find partition with `cat /proc/partitions` or `fdisk -l`
+
+Run `update-grub` after modifying.
