@@ -63,3 +63,5 @@ Change password of current user with no prompt for old password
 `launchctl load /Library/LaunchDaemons/`
 
 `lsbom .pkg/Contents/Archive.bom> | more`
+
+`sudo defaults write /Library/Preferences/com.apple.iWork09.Installer InstallMode -string 'Retail'`
