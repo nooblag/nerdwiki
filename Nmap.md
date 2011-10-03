@@ -12,7 +12,7 @@ Stolen from - http://richrines.com/post/10886870567/ultimate-nmap-scan
 
 `sudo nmap --spoof-mac Cisco --data-length 9 \ -f -D 172.168.200.200,RND:5,ME -v -n -O -sS -sV \ -oA /home/rich/metasploit/172.168.1.1 --log-errors \ -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 \ --randomize-hosts 192.178.1.1 172.168.1.2`
 
-Flag by flag breakdown - 
+<h2>Flag by flag breakdown - </h2>
 
 —spoof-mac Cisco: Spoof your mac address, other valid options would be a complete mac address, 0 for a completely random mac, a vendor’s OUI prefix, or another vendor name
 
@@ -42,7 +42,7 @@ Flag by flag breakdown -
 
 —randomize-hosts 192.178.1.1 172.168.1.2: Randomizes the target host order
 
-Optional:
+<h2>Optional:</h2>
 
 —traceroute: To trace path to host over various hops
 
