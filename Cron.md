@@ -23,3 +23,9 @@ then command to run.
 Example to create backup of home folder every night @ 4:20am - 
 
 `20 4 * * * tar -zcf /mnt/files/jlhomebak.tgz /home/jl/`
+
+## Cool crontabs
+
+Turn screensaver on every night @ 3am -
+
+`0 3 * * * xset s on`
