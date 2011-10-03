@@ -20,10 +20,10 @@ Use 1.9.2 by default -
 
 ## Cool Ruby gems
 
-* cheat
-* gollum
-* rails
-* jekyll
+* cheat - cheat sheets for all sorts of misc stuff
+* gollum - git based wiki
+* rails - ruby on rails
+* jekyll - static blog generator
 
 ## Errors and workarounds
 
