@@ -51,7 +51,7 @@ To generate an id_rsa.pub file, open up a terminal and type the following:
 `ssh-keygen -t rsa`
 
 Just press ‘enter’ for all of the following prompts:
-	
+
 	Generating public/private rsa key pair.
 	Enter file in which to save the key (/home/user/.ssh/id_rsa):
 	Enter passphrase (empty for no passphrase):
@@ -98,3 +98,17 @@ Works best to have a public key setup between the two servers.
 ## Run multiple commands -
 
 `ssh user@server.net "/home/user/scripts/lol.sh; ls"`
+
+## Share SSH connections
+
+Useful if you have several SSH sessions open to the same server. This
+will use the existing SSH connection for all other connections. It makes
+things really fast.
+
+Edit or create `~/.ssh/config` file and add the following -
+
+  Host *
+   ControlMaster auto
+   ControlPath ~/.ssh/master-%r@%h:%p
+
+chmod the file 600.
