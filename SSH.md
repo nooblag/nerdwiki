@@ -107,8 +107,8 @@ things really fast.
 
 Edit or create `~/.ssh/config` file and add the following -
 
-  Host *
-   ControlMaster auto
-   ControlPath ~/.ssh/master-%r@%h:%p
+    Host *
+      ControlMaster auto
+      ControlPath ~/.ssh/master-%r@%h:%p
 
 chmod the file 600.
