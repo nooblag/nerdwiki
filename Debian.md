@@ -45,3 +45,7 @@ Install screensavers -
 * Install NVidia
 * Install smbfs
 * Change keyboard layout to Macintosh 
+
+## Install PHP on Debian without Apache
+
+Installing `php5-cgi` package before installing `php5` package allows you to install PHP5 without installing Apache. `php5-cgi` package satisfies the dependencies that Apache provides.
