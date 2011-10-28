@@ -98,6 +98,14 @@ To push to GitHub from local machine, enter the following command -
 
 `git push -u origin master`
 
+## Add new files and auto rm deleted files from staging
+
+`git add -A`
+
+or
+
+`git add -u`
+
 ## To edit and sort
 
 `git bundle create some file HEAD`
