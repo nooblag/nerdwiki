@@ -10,3 +10,6 @@ Switch to previous screen -
 
 `Ctrl-A-P`
 
+Detach screen -
+
+`Ctrl-A-D`
