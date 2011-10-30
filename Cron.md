@@ -24,6 +24,14 @@ Example to create backup of home folder every night @ 4:20am -
 
 `20 4 * * * tar -zcf /mnt/files/jlhomebak.tgz /home/jl/`
 
+## Run cron job on reboot
+
+`@reboot echo hello`
+
+## Run job every 5 minutes
+
+`*/5 * * * * echo hello`
+
 ## Cool crontabs
 
 Turn screensaver on every night @ 3am -
