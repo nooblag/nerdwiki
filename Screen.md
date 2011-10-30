@@ -1,3 +1,5 @@
+## Basics
+
 New screen -
 
 `Ctrl-A-C`
@@ -13,3 +15,19 @@ Switch to previous screen -
 Detach screen -
 
 `Ctrl-A-D`
+
+## Example ~/.screenrc file (sweet setup)
+
+	screen -t bash
+
+	startup_message off
+	altscreen on
+	term screen-256color
+	bind ',' prev
+	bind '.' next
+
+	#change the hardstatus settings to give an window list at the bottom of the                                                                        
+	#screen, with the time and date and with the current window highlighted                                                                            
+	hardstatus alwayslastline
+	#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
+	hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
