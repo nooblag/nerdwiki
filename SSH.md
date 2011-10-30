@@ -112,3 +112,11 @@ Edit or create `~/.ssh/config` file and add the following -
       ControlPath ~/.ssh/master-%r@%h:%p
 
 chmod the file 600.
+
+## AutoSSH
+
+Keeps a SSH connection alive.
+
+E.g. creates a reverse SSH tunnel from local port 22 to remote port 1984, using port 29001 to monitor the SSH connection for connectivity. The `-f` option makes autoSSH a daemon.
+
+`autossh -M 29001 -f -N -R 1984:localhost:22 user@hostname.org`
