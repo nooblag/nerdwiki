@@ -24,7 +24,7 @@ http://codex.wordpress.org/Backing_Up_Your_Database
 
 http://codex.wordpress.org/Restoring_Your_Database_From_Backup
 
-### Make blog directory owner and group 'www-data', same as user running Apache.
+### Make blog directory owner and group 'www-data', same as user running Apache
 
 CHMOD all directories 755, all files 644 -
 

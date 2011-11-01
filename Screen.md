@@ -1,22 +1,22 @@
 ## Basics
 
-New screen -
+### New screen -
 
 `Ctrl-A-C`
 
-Switch to next screen -
+### Switch to next screen -
 
 `Ctrl-A-N`
 
-Switch to previous screen - 
+### Switch to previous screen - 
 
 `Ctrl-A-P`
 
-Detach screen -
+### Detach screen -
 
 `Ctrl-A-D`
 
-New screen with title -
+### New screen with title -
 
 `Ctrl-A-:`
 
