@@ -40,13 +40,13 @@ Merge branches (this example is merging development branch with master branch, m
 
 ## Cloning a repo from remote server
 
-Make sure you've checked out another branch on the remote server that isn't the master branch, say a development branch, 
-otherwise you'll get an error.
+Make sure you've checked out another branch on the remote server that isn't the master branch, say a development branch, otherwise you'll get an error.
+
 **NOTE:** This dosen't matter if cloning a bare repo.
 
 `git clone ssh://user@loe.org:/git/repo nameofbranch`
 
-## Make changes, then push back to server -
+### Make changes, then push back to server -
 
 `git add .`
 
@@ -58,15 +58,61 @@ Or you could rsync all files between servers, then init a git repo in the direct
 
 `git push user@loe.org:/git/repo -b newbranch`
 
-## Undo unstaged changes to files -
+### Git log
+
+`git log`
+
+Lists all commits and commit messages. The first 4 characters of a commit hash allow you to identify and work with specific commits.
+
+#### Example workflow
+
+Use `git log` to find a specific commit -
+
+	commit ba6af9e85675a974917a86488bc81fcd3252d1a8
+	Author: jl <jl@leagueofevil.org>
+	Date:   Mon Oct 31 23:09:28 2011 +1100
+
+	    Added Irssi.
+
+To checkout that commit, use the first 4 characters of the commit hash -
+
+`git checkout ba6a`
+
+## Misc commands
+
+### Undo unstaged changes to files -
 
 `git checkout .`
+
+### Add new files and auto rm deleted files from staging
+
+`git add -A`
+
+or
+
+`git add -u`
+
+### Revert to a specific commit and update commit message with info about the revert
+
+`git revert 93b1`
+
+### To edit and sort
+
+`git bundle create some file HEAD`
+
+`git diff 1b6d > my.patch`
+
+`git apply < my.patch`
+
+`git reset --hard`: load an old save and delete all saved games newer than the one just loaded.
 
 ## GitHub
 
 Small section on making a new repo on GitHub and pushing to it from a local repo.
 
-First ensure git variables on local machine match GitHub username and email -
+First ensure correct SSH pubkeys are setup on GitHub and on your local machine.
+
+Ensure git variables on local machine match GitHub username and email -
 
 `git config --global user.name "username"`
 
@@ -97,25 +143,3 @@ After repo is made, set local repo to push to GitHub repo -
 To push to GitHub from local machine, enter the following command -
 
 `git push -u origin master`
-
-## Add new files and auto rm deleted files from staging
-
-`git add -A`
-
-or
-
-`git add -u`
-
-## To edit and sort
-
-`git bundle create some file HEAD`
-
-`git diff 1b6d > my.patch`
-
-`git apply < my.patch`
-
-`git reset --hard`: load an old save and delete all saved games newer than the one just loaded.
-
-`git checkout 93b1`
-
-`git revert 93b1` - reverts to commit and updates commit message with revert info. 
