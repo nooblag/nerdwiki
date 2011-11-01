@@ -14,7 +14,7 @@
 
 ## Branches
 
-### Checking out a new branch
+### Checking out a new branch -
 
 `git checkout -b development`
 
@@ -84,7 +84,7 @@ To checkout that commit, use the first 4 characters of the commit hash -
 
 `git checkout .`
 
-### Add new files and auto rm deleted files from staging
+### Add new files and auto rm deleted files from staging -
 
 `git add -A`
 
@@ -92,11 +92,11 @@ or
 
 `git add -u`
 
-### Revert to a specific commit and update commit message with info about the revert
+### Revert to a specific commit and update commit message with info about the revert -
 
 `git revert 93b1`
 
-### To edit and sort
+### To edit and sort and document -
 
 `git bundle create some file HEAD`
 
