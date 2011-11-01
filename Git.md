@@ -1,4 +1,4 @@
-## Making a new repo
+## Creating a new repo
 
 `mkdir newrepo`
 
@@ -14,31 +14,33 @@
 
 ## Branches
 
-Checking out a new branch
+### Checking out a new branch
 
 `git checkout -b development`
 
-## Add files, then commit changes -
+### Add all files, then commit changes -
 
 `git add .`
 
 `git commit -m 'Added files to development branch.'`
 
-## List all branches with -
+### List all branches with -
 
 `git branch`
 
-## Change branches with -
+### Change branches with -
 
 `git checkout master` (or whatever branch you want)
 
-## Merge branches (this example is merging development branch with master branch, make sure you've checked out the master branch first) -
+## Merging
+
+Merge branches (this example is merging development branch with master branch, make sure you've checked out the master branch first) -
 
 `git merge development`
 
 ## Cloning a repo from remote server
 
-Make sure you've checked out another branch on the remote serverthat isn't the master branch, say a development branch, otherwise you'll get an error.
+Make sure you've checked out another branch on the remote server that isn't the master branch, say a development branch, otherwise you'll get an error.
 
 `git clone ssh://user@loe.org:/git/repo nameofbranch`
 
