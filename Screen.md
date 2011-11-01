@@ -16,6 +16,12 @@ Detach screen -
 
 `Ctrl-A-D`
 
+New screen with title -
+
+`Ctrl-A-:`
+
+then type `screen -t yourtitle`
+
 ## Example ~/.screenrc file (sweet setup)
 
 	screen -t bash
