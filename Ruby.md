@@ -8,7 +8,7 @@ Install RVM -
 
 Add RVM to .bashrc file - 
 
-`echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc `
+`echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc`
 
 Install Ruby 1.9.2 - 
 
@@ -31,6 +31,6 @@ zlib not installed
 
 `rvm pkg install zlib`
 
-`rvm remove 1.9.1`
+`rvm remove 1.9.2`
 
-`rvm install 1.9.1 -C --with-zlib-dir=$rvm_path/usr`
+`rvm install 1.9.2 -C --with-zlib-dir=$rvm_path/usr`
