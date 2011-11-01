@@ -1,14 +1,18 @@
 ## Basics
 
-List all crontabs -
+### List all crontabs -
 
 `crontab -l`
 
-New crontab -
+### New crontab -
 
 `crontab -e`
 
-## Format
+### Wipe all jobs from crontab -
+
+`crontab -r`
+
+## Format of crontab
 
 `m h dom mon dow commandtorun`
 
@@ -20,20 +24,20 @@ New crontab -
 
 then command to run.
 
-Example to create backup of home folder every night @ 4:20am - 
-
-`20 4 * * * tar -zcf /mnt/files/jlhomebak.tgz /home/jl/`
-
-## Run cron job on reboot
+### Run job on reboot
 
 `@reboot echo hello`
 
-## Run job every 5 minutes
+### Run job every 5 minutes
 
 `*/5 * * * * echo hello`
 
 ## Cool crontabs
 
-Turn screensaver on every night @ 3am -
+### Turn screensaver on every night @ 3am -
 
 `0 3 * * * xset s on`
+
+### Create backup of home folder every night @ 4:20am - 
+
+`20 4 * * * tar -zcf /mnt/files/jlhomebak.tgz /home/jl/`
