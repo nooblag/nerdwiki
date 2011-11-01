@@ -11,3 +11,4 @@ Use `ralsh` and then one of these -
 * `user` - lists all users on system
 * `package` - lists all packages installed
 * `service` - lists all services running
+* `file` - allows you to perform operations on the filesystem
