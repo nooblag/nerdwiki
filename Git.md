@@ -40,7 +40,9 @@ Merge branches (this example is merging development branch with master branch, m
 
 ## Cloning a repo from remote server
 
-Make sure you've checked out another branch on the remote server that isn't the master branch, say a development branch, otherwise you'll get an error.
+Make sure you've checked out another branch on the remote server that isn't the master branch, say a development branch, 
+otherwise you'll get an error.
+**NOTE:** This dosen't matter if cloning a bare repo.
 
 `git clone ssh://user@loe.org:/git/repo nameofbranch`
 
@@ -59,10 +61,6 @@ Or you could rsync all files between servers, then init a git repo in the direct
 ## Undo unstaged changes to files -
 
 `git checkout .`
-
-## Errors and workarounds
-
-`branch checked out` error is common when trying to push to a remote server, just make sure that the branch you're trying to push to isn't already checked out on the remote server. Use git checkout anotherbranch on remote server to switch to another branch.
 
 ## GitHub
 
