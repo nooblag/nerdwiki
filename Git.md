@@ -58,13 +58,13 @@ Or you could rsync all files between servers, then init a git repo in the direct
 
 `git push user@loe.org:/git/repo -b newbranch`
 
-### Git log
+## Git log
 
 `git log`
 
 Lists all commits and commit messages. The first 4 characters of a commit hash allow you to identify and work with specific commits.
 
-#### Example workflow
+### Example workflow
 
 Use `git log` to find a specific commit -
 
