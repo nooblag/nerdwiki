@@ -1,8 +1,8 @@
-## List processes with open ports -
+### List processes with open ports -
 
 `sudo netstat -tpl`
 
-## Tar
+### Tar
 
 Compress a file -
 
@@ -12,11 +12,11 @@ Untar a file -
 
 `tar -xvf whatever.tar`
 
-## Change timezone -
+### Change timezone -
 
 `sudo dpkg-reconfigure tzdata`
 
-## Navigating directories
+### Navigating directories
 
 Move to another directory but keep current directory in memory so you can navigate back easily -
 
@@ -26,12 +26,12 @@ To go back to directory you 'pushd' -
 
 `popd`
 
-## Find a file
+### Find a file
 
 Search in home directories -
 
 `find /home -name 'hello.c'`
 
-## Play a random episode of Seinfeld in VLC fullscreen
+### Play a random episode of Seinfeld in VLC fullscreen
 
 `find /mnt/media -name "Seinfeld*.avi" | sort -R | head -n1 | xargs -d '\n' vlc -f`

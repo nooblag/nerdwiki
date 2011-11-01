@@ -24,7 +24,7 @@ http://codex.wordpress.org/Backing_Up_Your_Database
 
 http://codex.wordpress.org/Restoring_Your_Database_From_Backup
 
-## Make blog directory owner and group 'www-data', same as user running Apache.
+### Make blog directory owner and group 'www-data', same as user running Apache.
 
 CHMOD all directories 755, all files 644 -
 
@@ -34,7 +34,7 @@ CHMOD all directories 755, all files 644 -
 
 `chmod 777 wp-content/uploads`
 
-## Change URLs in MySQL with PHPMyAdmin
+### Change URLs in MySQL with PHPMyAdmin
 
 Click on blog database, then wp_options
 
@@ -50,6 +50,6 @@ and -
 
 `UPDATE wp_posts SET post_content = replace(post_content, 'http://www.old-domain.com', 'http://www.new-domain.com');`
 
-## Errors and workarounds
+### Errors and workarounds
 
 May have to adjust Permalinks in Wordpress settings if clicking on categories and posts leads to a 404 error after a move. 

@@ -1,6 +1,6 @@
 ## Installing Kippo honeypot
 
-Tested on Ubuntu 10.04 Server
+**Tested on Ubuntu 10.04 Server.**
 
 `apt-get install python-twisted python-mysqldb subversion`
 
@@ -20,7 +20,7 @@ By default Kippo runs on port 2222. Run this command to route to default SSH 22 
 
 Log files are kept in `/home/kippo/log/tty`, downloaded files kept in `/home/kippo/dl`
 
-## Configure kippo to log into MySQL (optional) -
+## Configure kippo to log to MySQL (optional) -
 
 `mysql -u root -p`
 

@@ -24,11 +24,11 @@
 
 then command to run.
 
-### Run job on reboot
+### Run job on reboot -
 
 `@reboot echo hello`
 
-### Run job every 5 minutes
+### Run job every 5 minutes -
 
 `*/5 * * * * echo hello`
 
