@@ -2,7 +2,7 @@ Dropbear is a lightweight SSH2 server. It uses a lot less resources than OpenSSH
 
 `apt-get install dropbear`
 
-## Config file is /etc/default/dropbear. In this file, modify the line -
+### Config file is /etc/default/dropbear. In this file, modify the line -
 
 `NO_START=1`
 
@@ -20,11 +20,11 @@ to read -
 
 This will disable root logins.
 
-## Next, disable OpenSSH from starting up at login -
+### Next, disable OpenSSH from starting up at login -
 
 `mv /etc/rc2.d/S16ssh /etc/rc2.d/K16ssh`
 
-## Shutdown OpenSSH and start dropbear -
+### Shutdown OpenSSH and start dropbear -
 
 `/etc/init.d/ssh stop`
 
