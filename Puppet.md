@@ -12,3 +12,7 @@ Use `ralsh` and then one of these -
 * `package` - lists all packages installed
 * `service` - lists all services running
 * `file` - allows you to perform operations on the filesystem
+
+## Modules
+
+Modules encapsulate Puppet files (resources, definitions, classes, etc.) into a single redistributable package.
