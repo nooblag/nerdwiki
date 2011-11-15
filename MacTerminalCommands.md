@@ -58,6 +58,14 @@ Change password of current user with no prompt for old password
 
 `dscl localhost -passwd /Search/Users/Josh`
 
+### Fix permissions of external HD
+
+If locked and cannot change owners in Finder -
+
+`sudo chflags 0 /Volumes/*`
+
+`sudo chmod a+rx /Volumes/*`
+
 ### Misc.
 
 `launchctl load /Library/LaunchDaemons/`
