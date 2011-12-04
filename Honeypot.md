@@ -1,6 +1,6 @@
 ## Installing Kippo honeypot
 
-Based on 10.04 Server
+**Tested on Ubuntu 10.04 Server.**
 
 `apt-get install python-twisted python-mysqldb subversion`
 
@@ -10,7 +10,17 @@ Based on 10.04 Server
 
 `cp /home/kippo/kippo.cfg.dist /home/kippo/kippo.cfg`
 
-## Configure kippo to log into MySQL (optional) -
+Login as kippo (won't run as root), start Kippo -
+
+`./start.sh`
+
+By default Kippo runs on port 2222. Run this command to route to default SSH 22 port (note: this command will have to be run again if system is restarted) -
+
+`iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 22 -j REDIRECT --to-port 2222`
+
+Log files are kept in `/home/kippo/log/tty`, downloaded files kept in `/home/kippo/dl`
+
+## Configure kippo to log to MySQL (optional) -
 
 `mysql -u root -p`
 
@@ -24,17 +34,7 @@ Based on 10.04 Server
 
 Edit .cfg file to connect to MySQL database -
 
-	[database_mysql] host = localhost
-	databse = kippo
-	username = kippo
-	password = secret
-
-Login as kippo (won't run as root), start Kippo -
-
-`./start.sh`
-
-By default Kippo runs on port 2222. Run this command to route to default SSH 22 port (note: this command will have to be run again if system is restarted) -
-
-`iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 22 -j REDIRECT --to-port 2222`
-
-Log files are kept in `/home/kippo/log/tty`, downloaded files kept in `/home/kippo/dl`
+        [database_mysql] host = localhost
+        databse = kippo
+        username = kippo
+        password = secret

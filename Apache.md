@@ -1,6 +1,6 @@
-## Misc errors and fixes
+### Misc errors and fixes
 
-## If .php pages aren't showing and are offering to download the files instead.
+### If .php pages aren't showing and are offering to download the files instead
 
 Edit /etc/apache2/mods-enabled/php5.conf to match the following -
 

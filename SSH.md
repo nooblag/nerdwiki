@@ -1,7 +1,7 @@
 ## Secure SSH server
 `sudo nano /etc/ssh/sshd_config`
 
-Disable root login and enable login only for certain users
+### Disable root login and enable login only for certain users -
 
 	Authentication:
 	LoginGraceTime 120
@@ -9,38 +9,40 @@ Disable root login and enable login only for certain users
 	AllowUsers jl eggdrop jore
 	StrictModes yes
 
-Change SSH port from 22 to something else
+### Change SSH port from 22 to something else -
 	
 	What ports, IPs and protocols we listen for
 	Port 14666
 
-## SOCKS5 proxy
+## Tunneling
 
-`ssh -p 14666 -D 8082 user@123.156.156.23`
-
-## Tunnel port on remote machine to local machine
+### Tunnel port on remote machine to local machine
 
 E.g. Mysql port located on a remote server and forward to local port. From local machine -
 
 `ssh user@domain.org -L 1900:localhost:3306`
 
-## Reverse tunnel
+### Reverse tunnel
 
-On remote machine, SSH with -
+#### On remote machine, SSH with -
 
 `ssh -R 19999:localhost:22 user@123.156.156.23` (port 19999 can be any unused port)
 
-On local machine, SSH with -
+#### On local machine, SSH with -
 
 `ssh localhost -p 19999`
 
-## Reverse VNC tunnel
+### Reverse VNC tunnel
 
-On remote server, run -
+#### On remote server, run -
 
 `ssh user@otherserver.net -R 5900:127.0.0.1:5900`
 
 then on local client, connect to VNC on localhost via port 5900
+
+### SOCKS5 proxy
+
+`ssh -p 14666 -D 8082 user@123.156.156.23`
 
 ## Password-less SSH
 
@@ -95,20 +97,32 @@ Works best to have a public key setup between the two servers.
 
 `ssh user@server.net ls`
 
-## Run multiple commands -
+### Run multiple commands -
 
 `ssh user@server.net "/home/user/scripts/lol.sh; ls"`
 
-## Share SSH connections
+## Speed up SSH with shared connections
 
 Useful if you have several SSH sessions open to the same server. This
 will use the existing SSH connection for all other connections. It makes
 things really fast.
 
-Edit or create `~/.ssh/config` file and add the following -
+### Edit or create `~/.ssh/config` file and add the following -
 
     Host *
       ControlMaster auto
       ControlPath ~/.ssh/master-%r@%h:%p
 
 chmod the file 600.
+
+## AutoSSH
+
+Keeps a SSH connection alive. Requires SSH key for passwordless login.
+
+**E.g.** - creates a reverse SSH tunnel from local port 22 to remote port 1984, using port 29001 to monitor the SSH connection for connectivity. The `-f` option makes autoSSH a daemon.
+
+`autossh -M 29084 -f -N -R 1984:localhost:22 jl@leagueofevil.org`
+
+### Use a cronjob to run command every 2 minutes (just to be sure). Add to crontab -
+
+`*/2 * * * * autossh -M 29001 -f -N -R 1984:localhost:22 user@hostname.org`
