@@ -23,6 +23,13 @@ account
      read only = No
      hosts allow =
 
+Next, find the Share Definitions section and change to allow users to
+write to their home directories - 
+
+    # By default, the home directories are exported read-only. Change the
+    # next parameter to 'no' if you want to be able to write to them.
+       read only = no
+
 Add a SMB password for an existing user -
 
 `sudo smbpasswd -a nameofuser`
