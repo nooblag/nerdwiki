@@ -35,3 +35,8 @@ Search in home directories -
 ### Play a random episode of Seinfeld in VLC fullscreen
 
 `find /mnt/media -name "Seinfeld*.avi" | sort -R | head -n1 | xargs -d '\n' vlc -f`
+
+### Play sound like you're on the Starship Enterprise
+
+`play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25 fade h 1 864000 1`
+
