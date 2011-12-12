@@ -3,25 +3,24 @@
 Edit `/etc/samba/smb.conf` and look for Authentication section and
 change to this -
 
-####### Authentication #######
-
-# "security = user" is always a good idea. This will require a Unix
-account
-# in this server for every user accessing the server. See
-# /usr/share/doc/samba-doc/htmldocs/Samba3-HOWTO/ServerType.html
-# in the samba-doc package for details.
-
-    security = user
-
-    hosts allow =
-
-    [share]
-     comment = dudeshare
-     path = /share/
-     force user = samba
-     force group = samba
-     read only = No
-     hosts allow =
+    ####### Authentication #######
+    
+    # "security = user" is always a good idea. This will require a Unix account
+    # in this server for every user accessing the server. See
+    # /usr/share/doc/samba-doc/htmldocs/Samba3-HOWTO/ServerType.html
+    # in the samba-doc package for details.
+    
+        security = user
+    
+        hosts allow =
+    
+        [share]
+        comment = dudeshare
+        path = /share/
+        force user = samba
+        force group = samba
+        read only = No
+        hosts allow =
 
 Next, find the Share Definitions section and change to allow users to
 write to their home directories - 
@@ -37,4 +36,14 @@ Add a SMB password for an existing user -
 Then restart Samba with -
 
 `sudo /etc/init.d/samba restart`
+
+### Add a share
+
+Edit `/etc/samba/smb.conf` under Share Definitions section -
+
+    [sharename]
+    path = /path/to/share
+    write list = nameofuser
+
+Restart Samba with `sudo /etc/init.d/samba restart` after editing.
 
