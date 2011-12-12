@@ -47,3 +47,14 @@ Edit `/etc/samba/smb.conf` under Share Definitions section -
 
 Restart Samba with `sudo /etc/init.d/samba restart` after editing.
 
+### Guest share
+
+    [nameofmount]
+     comment = Guest mount
+     path = /path/to/guest/share
+     guest ok = yes
+     browseable = yes
+     read only = yes
+
+Then restart Samba.
+
