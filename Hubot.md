@@ -32,11 +32,11 @@ Start with `bin/hubot -a irc --enable-slash --name botname`
 
 ### Errors and workarounds
 
-Node-expat error; Libexpat header files are missing.
+Node-expat error; Libexpat header files are missing -
 
 `sudo aptitude install libexpat-dev`
 
-Redis connect error
+Redis connect error; redis-server package is missing -
 
-`redis-server` package is not installed.
+`sudo aptitude install redis-server`
 
