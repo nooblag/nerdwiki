@@ -12,6 +12,18 @@ Add `. ~/.nvm/nvm.sh` to ~/.bashrc or equivalent to activate nvm.
 
 Install node.js version 0.6.5 with `nvm install v0.6.5`. Use `nvm use v0.6.5` to activate.
 
+### Create a new bot
+
+`git clone git://github.com/github/hubot.git`
+
+`cd hubot`
+
+`npm install`
+
+`bin/hubot --create ~/bigbrobot`
+
+Then `cd` to `~/bigbrobot` or whatever path you entered to work on the bot.
+
 ### Use with IRC
 
 More configuration info and options @ https://github.com/github/hubot/wiki/Adapter:-IRC
