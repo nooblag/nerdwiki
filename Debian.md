@@ -1,19 +1,3 @@
-## Debian Web & Mail Server
-
-Only 100mb RAM usage with the following running. Very fast and quick web server.
-
-Installed -
-
-* nginx
-* dropbear
-* postgreSQL
-* mediawiki
-* postfix
-* dovecot
-* fail2ban
-
-OpenSSH, apache2, mysql turned off or uninstalled.
-
 ## Home setup
 
 Debian squeeze 6, 64-bit CD iso.
@@ -49,3 +33,14 @@ Install screensavers -
 ## Install PHP on Debian without Apache
 
 Installing `php5-cgi` package before installing `php5` package allows you to install PHP5 without installing Apache. `php5-cgi` package satisfies the dependencies that Apache provides.
+
+## HFS read/write
+
+Need to disable journaling in MacOS on the target drive.
+
+`sudo aptitude install hfsplus hfsutils hfsprogs`
+
+Edit `/etc/fstab` -
+
+`defaults,force,rw`
+
