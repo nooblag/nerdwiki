@@ -21,3 +21,9 @@
 ### Bring job `n` to the foreground -
 
 `fg n`
+
+### Logout a user
+
+As root -
+
+`pkill -KILL -u nameofuser`
