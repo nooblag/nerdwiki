@@ -31,6 +31,8 @@ Use 1.9.2 by default -
 
 ### Start a new Sinatra application
 
+Stolen from [Learn Ruby the Hard Way.](http://ruby.learncodethehardway.org/book/ex50.html)
+
 `gem install sinatra`
 
 Start new project folder/repo -
