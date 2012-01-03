@@ -44,3 +44,6 @@ Edit `/etc/fstab` -
 
 `defaults,force,rw`
 
+Make sure all userfiles have uid of 501 -
+
+`find / -uid 1000  -exec chmod 501 "{}" \`

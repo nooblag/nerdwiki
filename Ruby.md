@@ -1,36 +1,55 @@
-## Ruby on Rails install
+### Ruby on Rails install
 
 Good setup for development.
 
-#### Install RVM - 
+Install RVM - 
 
 `bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)`
 
-#### Add RVM to .bashrc file - 
+Add RVM to .bashrc file - 
 
 `echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc`
 
-#### Install Ruby 1.9.2 - 
+Install Ruby 1.9.2 - 
 
-`rvm install 1.9.2`
+Note: installing zlib now will help save compatability woes with certain gems later on.
 
-#### Use 1.9.2 by default -
+`rvm pkg install zlib`
+
+`rvm install 1.9.2 -C --with-zlib-dir=$rvm_path/usr`
+
+Use 1.9.2 by default -
 
 `rvm use 1.9.2 --default`
 
-## Cool Ruby gems
+### Cool Ruby gems
 
 * cheat - cheat sheets for all sorts of misc stuff
 * gollum - git based wiki
 * rails - ruby on rails
 * jekyll - static blog generator
 
-## Errors and workarounds
+### Start a new Sinatra application
 
-### zlib not installed
+`gem install sinatra`
 
-`rvm pkg install zlib`
+Start new project folder/repo -
 
-`rvm remove 1.9.2`
+`bundle gem nameofproj`
 
-`rvm install 1.9.2 -C --with-zlib-dir=$rvm_path/usr`
+Edit `lib/nameofproj.rb` to contain -
+
+  require_relative "nameofproj/version"
+  require "sinatra"
+
+  module nameofproj
+    get '/' do
+      greeting = "Hello, World!"
+      return greeting
+    end
+  end
+
+Then start the application with -
+
+`ruby lib/nameofproj.rb`
+
