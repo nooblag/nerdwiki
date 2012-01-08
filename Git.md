@@ -176,7 +176,7 @@ Setup with public key -
 
 `gl-setup ~/nameofkey.pub`
 
-Clone gitolite-admin to add users and repos -
+On client workstation (not the server), clone gitolite-admin to add users and repos -
 
 `git clone git@server:gitolite-admin`
 
