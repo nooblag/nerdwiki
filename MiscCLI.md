@@ -40,3 +40,7 @@ Search in home directories -
 
 `play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25 fade h 1 864000 1`
 
+### List most used commands from history
+
+history | cut -c8- | sort | uniq -c | sort -rn | head
+
