@@ -143,3 +143,41 @@ After repo is made, set local repo to push to GitHub repo -
 To push to GitHub from local machine, enter the following command -
 
 `git push -u origin master`
+
+## Setting up a git server
+
+Using gitolite and Debian.
+
+NOTE: Does not work with Dropbear. Use OpenSSH Server.
+
+Make sure git is installed with `aptitude install git git-core`.
+
+Add user for gitolite -
+
+`sudo adduser git`
+
+Change to new user -
+
+`su git`
+
+Download gitolite source -
+
+`git clone git://github.com/sitaramc/gitolite`
+
+Install gitolite - 
+
+`gitolite/src/gl-system-install`
+
+Add bin to PATH in ~/.bashrc (or similar) - 
+
+`PATH=/home/git/bin:$PATH`
+
+Setup with public key -
+
+`gl-setup ~/nameofkey.pub`
+
+Clone gitolite-admin to add users and repos -
+
+`git clone git@server:gitolite-admin`
+
+Add new keys to `gitolite-admin/keydir`. Edit `gitolite-admin/conf/gitolite.conf` to add new repos. Commit and push to server to apply changes.
