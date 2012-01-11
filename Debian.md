@@ -47,3 +47,11 @@ Edit `/etc/fstab` -
 Make sure all userfiles have uid of 501 -
 
 `find / -uid 1000  -exec chmod 501 "{}" \`
+
+## Firefox
+
+Install Firefox -
+
+Download latest 64bit from https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/
+
+Untar, create a symbolic link to `firefox` in the extracted folder to `/usr/bin/firefox`
