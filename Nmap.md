@@ -6,6 +6,10 @@ Scan local net and list OS, open ports, etc.
 
 `nmap -sS -O 192.168.0.*`
 
+Do a fast scan of the local network with less output than the default scan. Also only scan a certain range of IPs -
+
+`nmap -sS -O -F 192.168.0.1-100`
+
 ## Ultimate nmap scan
 
 Stolen from - http://richrines.com/post/10886870567/ultimate-nmap-scan
