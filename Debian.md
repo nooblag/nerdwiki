@@ -52,9 +52,9 @@ Make sure all userfiles have uid of 501 -
 
 Install Firefox -
 
-Download latest 64bit from `https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/`
+Download latest 64bit from - https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/
 
-or from Exetel mirror `https://http://mirror.exetel.com.au/pub/mozilla/firefox/releases/`
+or from Exetel mirror - https://http://mirror.exetel.com.au/pub/mozilla/firefox/releases/
 
 Untar, create a symbolic link to `firefox` in the extracted folder to `/usr/bin/firefox`
 
@@ -64,5 +64,5 @@ Exetel mirror -
 
 Add to `/etc/apt/sources.list`
 
-`deb http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib`
-`deb-src http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib`
+    deb http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib
+    deb-src http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib
