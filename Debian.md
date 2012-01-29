@@ -58,6 +58,10 @@ or from Exetel mirror - https://http://mirror.exetel.com.au/pub/mozilla/firefox/
 
 Untar, create a symbolic link to `firefox` in the extracted folder to `/usr/bin/firefox`
 
+Disable IPv6 - 
+
+Type `about:config` into the address bar. Search for `dns`, set disable IPv6 option to `TRUE`.
+
 ## Mirrors
 
 Exetel mirror -
@@ -66,3 +70,7 @@ Add to `/etc/apt/sources.list`
 
     deb http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib
     deb-src http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib
+
+Change default web browser -
+
+Change `x-www-browser` symlink to desired application in `/etc/alternatives`
