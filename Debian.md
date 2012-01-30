@@ -71,6 +71,14 @@ Add to `/etc/apt/sources.list`
     deb http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib
     deb-src http://debian.mirror.exetel.com.au/debian/ squeeze main non-free contrib
 
-Change default web browser -
+## Change default web browser -
 
 Change `x-www-browser` symlink to desired application in `/etc/alternatives`
+
+## Install Skype
+
+Download .deb package from - http://www.skype.com/go/getskype-linux-deb-64
+
+Install dependencies - 
+
+`sudo aptitude install lib32asound2 ia32-libs ia32-libs-gtk`

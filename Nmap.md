@@ -10,6 +10,14 @@ Do a fast scan of the local network with less output than the default scan. Also
 
 `nmap -sS -O -F 192.168.0.1-100`
 
+Spoof your IP - 
+
+`nmap -sS 192.168.0.15 -D 192.168.0.88`
+
+Look for a specific port (and spoof IP) -
+
+`nmap -p80 -O 192.168.0.15 -D 192.168.0.88`
+
 ## Ultimate nmap scan
 
 Stolen from - http://richrines.com/post/10886870567/ultimate-nmap-scan
