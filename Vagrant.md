@@ -48,9 +48,13 @@ Basic requirements -
 Steps to create new box -
 
 1. Create new VM in VirtualBox. Allocate 40gb dynamic disk space.
+
 2. Allocate 384mb RAM (default setting). Can always change this later.
+
 3. Disable audio, USB controllers, other un-needed stuff.
+
 4. Ensure NAT is enabled.
+
 5. Boot install disc. Use these settings -
 
 * Hostname: vagrant-debian-squeeze
@@ -59,9 +63,12 @@ Steps to create new box -
 * Main user: vagrant
 * Main user pass: vagrant
 
-6. Don't install GUI or guest additions from Debian installer.
+6. Do not install GUI or guest additions from Debian installer.
+
 7. Remove installation CD from apt sources in `/etc/apt/sources.list` and run `aptitude update`
+
 8. Boot VM, login as user. Run `aptitude install sudo`
+
 9. Run `visudo`. Change the `env_keep` line at top of file to match the below -
 
 `Defaults  env_keep+=SSH_AUTH_SOCK`
@@ -71,16 +78,27 @@ And add the following line to allow passwordless sudo for members of the `admin`
 `%admin ALL=NOPASSWD: ALL`
 
 10. Add the `admin` group with `groupadd admin`
+
 11. Add `vagrant` user to `admin` group with `usermod -aG admin vagrant`
+
 12. Restart sudo with `/etc/init.d/sudo restart`
+
 13. Run `aptitude install ruby-dev rubygems puppet`
+
 14. Run `sudo gem install chef --no-rdoc --no-ri`
+
 15. Run `sudo apt-get install linux-headers-$(uname -r) build-essential`
+
 16. Mount Guest Additions in GUI under Devices.
+
 17. Run `sudo mount /dev/cdrom /media/cdrom`
+
 18. Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run` to install Guest Additions.
+
 19. Add `UseDNS No` to `/etc/sshd_config` to speed up SSH connections.
+
 20. Run `apt-get clean` to clear cache and free up space.
+
 21. Under `vagrant` user, add the key from the following link to `~/.ssh/authorized_keys` and ensure file is chmod `0600` -
 
 `https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub`
