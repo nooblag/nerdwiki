@@ -1,3 +1,37 @@
+## Basics
+
+Add a new box to Vagrant -
+
+`vagrant box add name_of_box path_to_box`
+
+Remove a box from Vagrant -
+
+`vagrant box remove name_of_box`
+
+Initialize a new box in new directory -
+
+`vagrant init box_name`
+
+Start up a box -
+
+`vagrant up`
+
+SSH to a box -
+
+`vagrant ssh`
+
+Pause a running box -
+
+`vagrant suspend`
+
+Resume a paused box -
+
+`vagrant resume`
+
+Wipe an initialized box -
+
+`vagrant destroy`
+
 ## Creating a new base box
 
 From - http://vagrantup.com/docs/base_boxes.html
@@ -19,11 +53,11 @@ Steps to create new box -
 4. Ensure NAT is enabled.
 5. Boot install disc. Use these settings -
 
-    * Hostname: vagrant-debian-squeeze
-    * Domain: vagrantup.com
-    * Root pass: vagrant
-    * Main user: vagrant
-    * Main user pass: vagrant
+* Hostname: vagrant-debian-squeeze
+* Domain: vagrantup.com
+* Root pass: vagrant
+* Main user: vagrant
+* Main user pass: vagrant
 
 6. Don't install GUI or guest additions from Debian installer.
 7. Remove installation CD from apt sources in `/etc/apt/sources.list` and run `aptitude update`
@@ -47,9 +81,9 @@ And add the following line to allow passwordless sudo for members of the `admin`
 18. Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run` to install Guest Additions.
 19. Add `UseDNS No` to `/etc/sshd_config` to speed up SSH connections.
 20. Run `apt-get clean` to clear cache and free up space.
-21. Under `vagrant` user, add the following key to `~/.ssh/authorized_keys` and ensure file is chmod `0600` -
+21. Under `vagrant` user, add the key from the following link to `~/.ssh/authorized_keys` and ensure file is chmod `0600` -
 
-    ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key
+`https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub`
 
 22. Package the new box using the VirtualBox VM name -
 
