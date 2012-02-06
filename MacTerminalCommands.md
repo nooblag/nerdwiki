@@ -54,9 +54,13 @@ Use grep to find reboots or shutdowns in a certain month.
 
 ### 10.7 Lion
 
-Change password of current user with no prompt for old password
+Change password of current user with no prompt for old password (only works in 10.7.1) -
 
 `dscl localhost -passwd /Search/Users/Josh`
+
+Disable/enable local Time Machine backups -
+
+`sudo tmutil disablelocal`
 
 ### Fix permissions of external HD
 
