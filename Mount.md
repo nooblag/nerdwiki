@@ -26,6 +26,12 @@ Use `umask=100` for just read/write for all instead of UID.
 
 If a space is needed in the share name, use octal \040, eg `//192.168.0.20/TV\040Shows`
 
+### Mount an .ISO image
+
+`sudo mkdir /tmp/cdrom`
+
+`sudo mount -o loop,exec path_to_.iso /tmp/cdrom`
+
 ### Misc.
 
 Refresh fstab with `mount -a`, unmount all with `umount -a`
