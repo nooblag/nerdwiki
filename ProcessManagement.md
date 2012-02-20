@@ -27,3 +27,15 @@
 As root -
 
 `pkill -KILL -u nameofuser`
+
+### Get output of process
+
+Find pid -
+
+`ps aux|grep dd`
+
+Send USR1 to process -
+
+`kill -USR1 pidofprocess`
+
+This will print an output to STDOUT.
