@@ -82,3 +82,44 @@ Download .deb package from - http://www.skype.com/go/getskype-linux-deb-64
 Install dependencies - 
 
 `sudo aptitude install lib32asound2 ia32-libs ia32-libs-gtk`
+
+## Perfect server setup
+
+From howtoforge.com
+
+Run script/puppet manifest you made, and look at the below notes and piece it together yourself, lazy!
+
+    General type of mail configuration: <-- Internet Site
+    System mail name: <-- server1.example.com
+    New password for the MySQL "root" user: <-- yourrootsqlpassword
+    Repeat password for the MySQL "root" user: <-- yourrootsqlpassword
+    Create directories for web-based administration? <-- No
+    SSL certificate required <-- Ok
+
+We want MySQL to listen on all interfaces, not just localhost, therefore we edit `/etc/mysql/my.cnf` and comment out the line `bind-address = 127.0.0.1`
+
+Then restart mySQL.
+
+During the installation, the SSL certificates for IMAP-SSL and POP3-SSL are created with the hostname localhost. To change this to the correct hostname (server1.example.com in this tutorial), delete the certificates...
+
+`rm -f /etc/courier/imapd.pem`
+
+`rm -f /etc/courier/pop3d.pem`
+
+Edit `/etc/courier/imapd.cnf` and `/etc/courier/popd.cnf` -
+
+and modify the following two files; replace CN=localhost with CN=server1.example.com (you can also modify the other values, if necessary)
+
+Then recreate the certificates -
+
+`mkimapdcert`
+
+`mkpop3dcert`
+
+and restart Courier -
+
+`/etc/init.d/courier-imap-ssl restart`
+
+`/etc/init.d/courier-pop-ssl restart`
+
+
