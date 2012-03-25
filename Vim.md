@@ -9,3 +9,5 @@
 * zt - put this line at the 't'op of the screen
 * zb - put this line at the 'b'ottom of the screen
 * zz - put this line at the middle of the screen
+
+* . - in command mode, this will repeat last command
