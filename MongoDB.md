@@ -1,4 +1,5 @@
 ## Install
+
 `sudo aptitude install mongodb`
 
 ### With PHP extension
@@ -15,6 +16,14 @@
 
 `db.members.find()`
 
-### Updating an item
+### Insert an item
+
+`db.members.insert( { name: "Dave", lastName: "Grohl", instrument: "Vox/Guitar" } )`
+
+### Update an item
 
 `db.members.update( { lastName: "Grohl" }, { "$set" : { "instrument" : "Vox/Guitar" } } } )`
+
+### Remove an item
+
+`db.members.remove( { name: "Dave" } )`
