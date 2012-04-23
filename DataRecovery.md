@@ -2,12 +2,24 @@
 
 `sudo dd bs=512 if=/dev/disk0s3 of=/Volumes/Backup/backup.dmg conv=noerror,sync`
 
-This is essentially what data recovery specialists do anyway. But heaps cheaper.
-
 ### Testdisk
 
 Use this, it's really good for recovering partitions that have been erased.
 
-### Helen's boot CD
+## Destroying data
 
-Was that what I used to recover Nugg's failing Windows HD? I think so. It's a live CD, grab that.
+### Zero out a hard drive
+
+`dd if=/dev/zero of=/dev/pathtodevice`
+
+Only one pass is needed.
+
+## dcfldd
+
+Improved version of `dd`. Includes progress bar, among other things.
+
+## iPhone
+
+### Backup a jailbroken iPhone -
+
+`ssh root@jphone dd if=/dev/rdisk0 bs=1M | dd of=iphonebak.img`

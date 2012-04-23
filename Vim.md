@@ -11,3 +11,9 @@
 * zz - put this line at the middle of the screen
 
 * . - in command mode, this will repeat last command
+
+## Deleting
+
+Delete lines with a pattern -
+
+`:g/whattodelete/d`
