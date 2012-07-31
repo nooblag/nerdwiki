@@ -17,3 +17,15 @@
 Delete lines with a pattern -
 
 `:g/whattodelete/d`
+
+## Installing
+
+On Debian. From source, with ruby & python syntax support.
+
+Download vim - `curl -O ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2` and untar.
+
+Install ncurses, lua & ctags dependencies - `aptitude install libncurses5-dev lua5.2 ctags`
+
+Configure - `./configure --with-features=huge --enable-luainterp \\n            --enable-perlinterp --enable-pythoninterp \\n            --enable-rubyinterp --enable-gui=gtk2 \\n            --disable-largefile`
+
+Then `make && sudo make install`
