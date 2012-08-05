@@ -1,7 +1,8 @@
 ## Secure SSH server
-`sudo nano /etc/ssh/sshd_config`
 
-### Disable root login and enable login only for certain users -
+Edit config file - `sudo nano /etc/ssh/sshd_config`
+
+Disable root login and enable login only for certain users -
 
 	Authentication:
 	LoginGraceTime 120
@@ -9,7 +10,7 @@
 	AllowUsers jl eggdrop jore
 	StrictModes yes
 
-### Change SSH port from 22 to something else -
+Change SSH port from 22 to something else -
 	
 	What ports, IPs and protocols we listen for
 	Port 14666
@@ -24,17 +25,17 @@ E.g. Mysql port located on a remote server and forward to local port. From local
 
 ### Reverse tunnel
 
-#### On remote machine, SSH with -
+On remote machine, SSH with -
 
 `ssh -R 19999:localhost:22 user@123.156.156.23` (port 19999 can be any unused port)
 
-#### On local machine, SSH with -
+On local machine, SSH with -
 
 `ssh localhost -p 19999`
 
 ### Reverse VNC tunnel
 
-#### On remote server, run -
+On remote server, run -
 
 `ssh user@otherserver.net -R 5900:127.0.0.1:5900`
 
@@ -107,7 +108,7 @@ Useful if you have several SSH sessions open to the same server. This
 will use the existing SSH connection for all other connections. It makes
 things really fast.
 
-### Edit or create `~/.ssh/config` file and add the following -
+Edit or create `~/.ssh/config` file and add the following -
 
     Host *
       ControlMaster auto
@@ -123,6 +124,10 @@ Keeps a SSH connection alive. Requires SSH key for passwordless login.
 
 `autossh -M 29084 -f -N -R 1984:localhost:22 jl@leagueofevil.org`
 
-### Use a cronjob to run command every 2 minutes (just to be sure). Add to crontab -
+Use a cronjob to run command every 60 minutes (just to be sure). Add to crontab -
 
-`*/2 * * * * autossh -M 29001 -f -N -R 1984:localhost:22 user@hostname.org`
+`*/60 * * * * autossh -M 29001 -f -N -R 1984:localhost:22 user@hostname.org`
+
+If connecting to a server on non-standard SSH port (not 22) -
+
+`autossh -M 29001 -f -p 14666 -R 1984:localhost:22 user@hostname.org`

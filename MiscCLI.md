@@ -44,3 +44,6 @@ Search in home directories -
 
 history | cut -c8- | sort | uniq -c | sort -rn | head
 
+### Run a command every 2 seconds
+
+`watch -n2 "ps aux|grep ssh"`
