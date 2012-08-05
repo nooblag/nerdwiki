@@ -1,14 +1,14 @@
 ## Basics
 
-### List all crontabs -
+List all crontabs -
 
 `crontab -l`
 
-### New crontab -
+New crontab -
 
 `crontab -e`
 
-### Wipe all jobs from crontab -
+Wipe all jobs from crontab -
 
 `crontab -r`
 
@@ -24,6 +24,8 @@
 
 then command to run.
 
+## Example crontabs
+
 ### Run job on reboot -
 
 `@reboot echo hello`
@@ -31,8 +33,6 @@ then command to run.
 ### Run job every 5 minutes -
 
 `*/5 * * * * echo hello`
-
-## Cool crontabs
 
 ### Turn screensaver on every night @ 3am -
 
