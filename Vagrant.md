@@ -45,17 +45,17 @@ Basic requirements -
 * Ruby and RubyGems to install Chef and Puppet
 * Chef and Puppet for provisioning support
 
-Steps to create new box -
+### Steps to create new box -
 
-1. Create new VM in VirtualBox. Allocate 40gb dynamic disk space.
+* Create new VM in VirtualBox. Allocate 40gb dynamic disk space.
 
-2. Allocate 384mb RAM (default setting). Can always change this later.
+* Allocate 384mb RAM (default setting). Can always change this later.
 
-3. Disable audio, USB controllers, other un-needed stuff.
+* Disable audio, USB controllers, other un-needed stuff.
 
-4. Ensure NAT is enabled.
+* Ensure NAT is enabled.
 
-5. Boot install disc. Use these settings -
+Boot install disc. Use these settings -
 
 * Hostname: vagrant-debian-squeeze
 * Domain: vagrantup.com
