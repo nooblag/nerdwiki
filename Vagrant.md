@@ -55,7 +55,7 @@ Basic requirements -
 
 * Ensure NAT is enabled.
 
-Boot install disc. Use these settings -
+* Boot install disc. Use these settings -
 
 * Hostname: vagrant-debian-squeeze
 * Domain: vagrantup.com
@@ -63,13 +63,13 @@ Boot install disc. Use these settings -
 * Main user: vagrant
 * Main user pass: vagrant
 
-6. Do not install GUI or guest additions from Debian installer.
+Do not install GUI or guest additions from Debian installer.
 
-7. Remove installation CD from apt sources in `/etc/apt/sources.list` and run `aptitude update`
+* Remove installation CD from apt sources in `/etc/apt/sources.list` and run `aptitude update`
 
-8. Boot VM, login as user. Run `aptitude install sudo`
+* Boot VM, login as user. Run `aptitude install sudo`
 
-9. Run `visudo`. Change the `env_keep` line at top of file to match the below -
+* Run `visudo`. Change the `env_keep` line at top of file to match the below -
 
 `Defaults  env_keep+=SSH_AUTH_SOCK`
 
@@ -77,43 +77,43 @@ And add the following line to allow passwordless sudo for members of the `admin`
 
 `%admin ALL=NOPASSWD: ALL`
 
-10. Add the `admin` group with `groupadd admin`
+* Add the `admin` group with `groupadd admin`
 
-11. Add `vagrant` user to `admin` group with `usermod -aG admin vagrant`
+* Add `vagrant` user to `admin` group with `usermod -aG admin vagrant`
 
-12. Restart sudo with `/etc/init.d/sudo restart`
+* Restart sudo with `/etc/init.d/sudo restart`
 
-13. Run `aptitude install ruby-dev rubygems puppet`
+* Run `aptitude install ruby-dev rubygems puppet`
 
-14. Run `sudo gem install chef --no-rdoc --no-ri`
+* Run `sudo gem install chef --no-rdoc --no-ri`
 
-15. Run `sudo apt-get install linux-headers-$(uname -r) build-essential`
+* Run `sudo apt-get install linux-headers-$(uname -r) build-essential`
 
-16. Mount Guest Additions in GUI under Devices.
+* Mount Guest Additions in GUI under Devices.
 
-17. Run `sudo mount /dev/cdrom /media/cdrom`
+* Run `sudo mount /dev/cdrom /media/cdrom`
 
-18. Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run` to install Guest Additions.
+* Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run` to install Guest Additions.
 
-19. Add `UseDNS No` to `/etc/sshd_config` to speed up SSH connections.
+* Add `UseDNS No` to `/etc/sshd_config` to speed up SSH connections.
 
-20. Run `apt-get clean` to clear cache and free up space.
+* Run `apt-get clean` to clear cache and free up space.
 
-21. Under `vagrant` user, add the key from the following link to `~/.ssh/authorized_keys` and ensure file is chmod `0600` -
+* Under `vagrant` user, add the key from the following link to `~/.ssh/authorized_keys` and ensure file is chmod `0600` -
 
 `https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub`
 
-22. Package the new box using the VirtualBox VM name -
+* Package the new box using the VirtualBox VM name -
 
 `vagrant package --base my_base_box`
 
 This will make a new file named package.box
 
-23. Add `package.box` to Vagrant - 
+* Add `package.box` to Vagrant - 
 
 `vagrant box add my_box package.box`
 
-24. Start up the new box -
+* Start up the new box -
 
 `cd test_environment`
 
