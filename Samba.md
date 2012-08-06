@@ -57,4 +57,3 @@ Restart Samba with `sudo /etc/init.d/samba restart` after editing.
      read only = yes
 
 Then restart Samba.
-

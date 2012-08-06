@@ -1,4 +1,6 @@
-## Firmware
+Tested on Debian Wheezy.
+
+### Firmware
 
 Google for the following file -
 
@@ -6,10 +8,12 @@ Google for the following file -
 
 Once downloaded, copy to `/lib/firmware`
 
-## Install utils
+### Install utils
 
 `aptitude install dvb-apps`
 
-## Scan for channels
+### Scan for channels
 
 `scan /usr/share/dvb/dvb-t/au-Newcastle >> ~/channels.conf`
+
+Watch with `vlc ~/channels.conf`

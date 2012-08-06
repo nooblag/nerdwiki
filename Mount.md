@@ -1,5 +1,7 @@
 ### Mount samba network share
 
+NOTE: use `cifs` in place of `smbfs` in the below line if it does not work, as `smbfs` may be deprecated on some systems.
+
 `sudo mount -t smbfs -o username=user,password=pass //192.168.0.20/Media /mnt/media`
 
 ### Mount drives with UUID and /etc/fstab
@@ -19,6 +21,8 @@ Example of mounting a FAT partition to allow user read/write -
 Note - may need to chown /mnt/files to allow user read/write.
 
 ### Add a samba share to /etc/fstab
+
+NOTE: use `cifs` in place of `smbfs` in the below line if it does not work, as `smbfs` may be deprecated on some systems.
 
 `//192.168.0.20/Media /mnt/media smbfs user,rw,uid=1000,gid=100,username=user,password=pass 0 0`
 
