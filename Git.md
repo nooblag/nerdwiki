@@ -96,7 +96,7 @@ or
 
 `git revert 93b1`
 
-### To edit and sort and document -
+### Misc - to edit and sort -
 
 `git bundle create some file HEAD`
 

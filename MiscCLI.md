@@ -47,3 +47,17 @@ history | cut -c8- | sort | uniq -c | sort -rn | head
 ### Run a command every 2 seconds
 
 `watch -n2 "ps aux|grep ssh"`
+
+### Rename files in shell
+
+Change all files with `.SMS` extension to lowercase `.sms` extension -
+
+`rename 's/\.SMS/.sms/' *.SMS`
+
+### Split a large file (8gb) into 2gb chunks
+
+`split -b 2048m filetosplit.tar`
+
+This will split the file into smaller files with filenames `xaa`, `xab`, `xac` and so on. To join files together again, use `cat`. E.g. -
+
+`cat xa* >> filetosplit.tar`

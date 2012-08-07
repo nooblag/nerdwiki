@@ -44,7 +44,7 @@ Edit `/etc/fstab` -
 
 `defaults,force,rw`
 
-Make sure all userfiles have uid of 501 -
+Make sure all userfiles have uid of 501 for Mac compatability -
 
 `find / -uid 1000  -exec chmod 501 "{}" \`
 
@@ -75,13 +75,15 @@ Add to `/etc/apt/sources.list`
 
 Change `x-www-browser` symlink to desired application in `/etc/alternatives`
 
-## Install Skype
+## .deb Packages
 
-Download .deb package from - http://www.skype.com/go/getskype-linux-deb-64
+List files in a .deb package -
 
-Install dependencies - 
+`dpkg -c nameof.deb`
 
-`sudo aptitude install lib32asound2 ia32-libs ia32-libs-gtk`
+Extract .deb package but do not install -
+
+`dpkg -x nameof.deb /path/to/extract/to`
 
 ## Perfect server setup
 
@@ -121,5 +123,3 @@ and restart Courier -
 `/etc/init.d/courier-imap-ssl restart`
 
 `/etc/init.d/courier-pop-ssl restart`
-
-
