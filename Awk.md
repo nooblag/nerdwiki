@@ -12,6 +12,6 @@ Print entire line - `awk '{print $0}'`
 
 Example -
 
-`echo 'this is just a test' | awk '{print $(NF-2), $1}'
+`echo 'this is just a test' | awk '{print $(NF-2), $1}'`
 
 will output `just this`
