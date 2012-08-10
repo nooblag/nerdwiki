@@ -42,7 +42,7 @@ Search in home directories -
 
 ### List most used commands from history
 
-history | cut -c8- | sort | uniq -c | sort -rn | head
+`history | cut -c8- | sort | uniq -c | sort -rn | head`
 
 ### Run a command every 2 seconds
 
@@ -61,3 +61,7 @@ Change all files with `.SMS` extension to lowercase `.sms` extension -
 This will split the file into smaller files with filenames `xaa`, `xab`, `xac` and so on. To join files together again, use `cat`. E.g. -
 
 `cat xa* >> filetosplit.tar`
+
+### Print size of directories
+
+`du -hd 1`

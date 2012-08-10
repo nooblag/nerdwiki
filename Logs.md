@@ -50,3 +50,9 @@ Generate a stats page -
 `/usr/lib/cgi-bin/awstats.pl -config=www.example.com -update -output > /var/www/www.example.com/awstats.html`
 
 This will only create main reports.
+
+## Misc
+
+### Seach logs for SSH connections
+
+`grep -w 'sshd' /var/log/auth.log | grep -w 'Accepted' | awk '{ print $0 }'`
