@@ -122,7 +122,7 @@ Keeps a SSH connection alive. Requires SSH key for passwordless login.
 
 **E.g.** - creates a reverse SSH tunnel from local port 22 to remote port 1984, using port 29001 to monitor the SSH connection for connectivity. The `-f` option makes autoSSH a daemon.
 
-`autossh -M 29084 -f -N -R 1984:localhost:22 jl@leagueofevil.org`
+`autossh -M 29001 -f -N -R 1984:localhost:22 jl@leagueofevil.org`
 
 Use a cronjob to run command every 60 minutes (just to be sure). Add to crontab -
 

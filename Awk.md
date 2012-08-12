@@ -26,7 +26,7 @@ will output `just this`
 
 ### Use colon (:) instead of whitespace as delimiter -
 
-`awk -F ":" '{ print $1 $2 }' file.txt`
+`awk -F ':' '{ print $1 $2 }' file.txt`
 
 ### Print directory names and sizes and format nicely -
 
