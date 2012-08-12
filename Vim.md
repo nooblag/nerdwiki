@@ -1,18 +1,34 @@
-## Navigating
+### Navigating
 
-* nG - jump to line n ("line 5, Go")
-* C-o - jump backwards ("out")
-* C-i - jump forwards ("in")
-* L - jump to bottom of screen ("low")
-* M - jump to middle of screen ("middle")
-* H - jump to top of screen ("high")
-* zt - put this line at the 't'op of the screen
-* zb - put this line at the 'b'ottom of the screen
-* zz - put this line at the middle of the screen
+`nG` - jump to line n ("line 5, Go")
 
-* . - in command mode, this will repeat last command
+`C-o` - jump backwards ("out")
 
-## Deleting
+`C-i` - jump forwards ("in")
+
+`L` - jump to bottom of screen ("low")
+
+`M` - jump to middle of screen ("middle")
+
+`H` - jump to top of screen ("high")
+
+`zt` - put this line at the 't'op of the screen
+
+`zb` - put this line at the 'b'ottom of the screen
+
+`zz` - put this line at the middle of the screen
+
+`.` - in command mode, this will repeat last command
+
+### Undo
+
+`u` in command mode, or type `:undo`. This accepts an argument, e.g. `3u` to undo 3 times.
+
+`CTRL-R` , or type `:redo` to redo.
+
+Type `:undol` to see a list of changes.
+
+### Deleting
 
 Delete lines with a pattern -
 
@@ -20,7 +36,7 @@ Delete lines with a pattern -
 
 ## Installing
 
-On Debian. From source, with ruby & python syntax support.
+On Debian. From source, with ruby & python syntax support for popular vim plugins.
 
 Download vim - `curl -O ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2` and untar.
 
