@@ -20,6 +20,12 @@
 
 `.` - in command mode, this will repeat last command
 
+### Copy and paste
+
+Type `:y` in command mode to copy current line.
+
+`p` to paste beneath current line.
+
 ### Undo
 
 `u` in command mode, or type `:undo`. This accepts an argument, e.g. `3u` to undo 3 times.
@@ -28,7 +34,9 @@
 
 Type `:undol` to see a list of changes.
 
-### Deleting
+### Delete
+
+`dd` deletes current line. Accepts an argument, e.g. `3dd` will delete current and next 2 lines beneath it.
 
 Delete lines with a pattern -
 
