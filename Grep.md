@@ -17,3 +17,9 @@ Use option `-e` -
 ### Return only lines that exactly match
 
 `grep -w 'URL'`
+
+### Find process ID with `pgrep`
+
+`pgrep nameofapp` - print process ID.
+
+`pgrep -l nameofapp` - print process ID and name of process.
