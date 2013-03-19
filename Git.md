@@ -106,6 +106,16 @@ or
 
 `git reset --hard`: load an old save and delete all saved games newer than the one just loaded.
 
+## git stash
+
+`git stash` - save the changes you have made without commiting them
+
+`git stash list` - list of your stash
+
+`git stash apply` - bring back the stash to current branch
+
+`git stash drop NAMEOFSTASH` - drop specified stash
+
 ## GitHub
 
 Small section on making a new repo on GitHub and pushing to it from a local repo.
