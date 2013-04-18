@@ -18,6 +18,7 @@ Uninstall Evolution and clean up it's mess -- manually del indicator-messages an
 Modify Grub menu (dodgy), disable boot splash screen, and set login to text:
 
 Run `sudo gedit /etc/default/grub` and change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `"text"`
+
 After this run `sudo update-grub2`
 
 
