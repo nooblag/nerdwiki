@@ -1,6 +1,12 @@
-### List processes with open ports -
+### Netstat
+
+List processes with open ports -
 
 `sudo netstat -tpl`
+
+Display active Internet connections -
+
+`netstat -natp`
 
 ### Tar
 
@@ -12,7 +18,7 @@ Untar a file -
 
 `tar -xvf whatever.tar`
 
-### Change timezone -
+### Change timezone
 
 `sudo dpkg-reconfigure tzdata`
 

@@ -122,3 +122,19 @@ This will make a new file named package.box
 `vagrant up`
 
 `vagrant ssh`
+
+### Creating a CentOS box
+
+Based on CentOS 6.4 32bit
+
+- Create a new box named `vagrant-centos64-32`
+
+- Use at least 2048mb of RAM for initial install; change to 256mb after install before creating the box with vagrant
+
+- Disable sound and USB
+
+- Set hostname to `vagrant-centos64-32`
+
+- Set root password to `vagrant`
+
+- Install guest additions
