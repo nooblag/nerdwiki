@@ -20,6 +20,12 @@
 
 `.` - in command mode, this will repeat last command
 
+#### Lines
+
+`0` - jump to beginning of line
+
+`$` - jump to end of line
+
 ### Copy and paste
 
 Type `:y` in command mode to copy current line.
