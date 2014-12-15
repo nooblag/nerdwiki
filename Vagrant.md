@@ -138,3 +138,11 @@ Based on CentOS 6.4 32bit
 - Set root password to `vagrant`
 
 - Install guest additions
+
+## Errors and Workarounds
+
+### 10.9 bridged adapter error
+
+run `sudo /Library/StartupItems/VirtualBox/VirtualBox restart`
+
+as per - `https://forums.virtualbox.org/viewtopic.php?f=8&t=55969&start=15`
