@@ -25,3 +25,5 @@
 ### 10.10
 
 - Make bootable USB using this method - `http://www.tonymacx86.com/445-unibeast-install-os-x-yosemite-any-supported-intel-based-pc.html`
+
+- MultiBeast post-install - install NullCPUPowerManagement, TRIM Enabler (if SSD)
