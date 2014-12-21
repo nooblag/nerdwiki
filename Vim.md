@@ -1,3 +1,5 @@
+## Vim
+
 ### Navigating
 
 `nG` - jump to line n ("line 5, Go")
@@ -47,6 +49,20 @@ Type `:undol` to see a list of changes.
 Delete lines with a pattern -
 
 `:g/whattodelete/d`
+
+### Highlight a word
+
+(in command mode)
+
+`Shift + #`
+
+### Buffers
+
+(in command mode)
+
+#### List buffers
+
+`:ls`
 
 ## Installing
 
