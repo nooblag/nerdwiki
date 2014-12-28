@@ -30,3 +30,10 @@
 
 - install NullCPUPowerManagement, TRIM Enabler (if SSD)
 - Ethernet - install RealtekRTL81xx
+
+## Errors & Workarounds
+
+### App Store login error
+
+- Ensure Ethernet kext is installed and Ethernet is network interface en0
+- If not en0, then delete `/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist` and restart
