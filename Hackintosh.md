@@ -30,6 +30,7 @@
 
 - install NullCPUPowerManagement, TRIM Enabler (if SSD)
 - Ethernet - install RealtekRTL81xx
+- Audio - install Realtek ALC892, Optional HDA Enabler > Audio ID: 1
 
 ## Errors & Workarounds
 
