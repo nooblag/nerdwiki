@@ -84,6 +84,24 @@ Or just using the first 4 characters (or however many characters you want) -
 
 `git checkout ba6a`
 
+### assume-unchanged
+
+Mark a file so git will temporarily ignore changes to it -
+
+`git update-index --assume-unchanged nameOfFile.txt`
+
+To undo - 
+
+`git update-index --no-assume-unchanged nameOfFile.txt`
+
+List files. Those that are prefixed with a lowercase `h` are marked as `assume-unchanged`  -
+
+`git ls-files -v`
+
+Or, use this to list only those marked as `assume-unchanged` - 
+
+`git ls-files -v | grep "^[[:lower:]]"`
+
 ### Misc commands
 
 #### Undo unstaged changes to files
