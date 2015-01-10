@@ -1,4 +1,6 @@
-## Creating a new repo
+## Commands
+
+### Creating a new repo
 
 `mkdir newrepo`
 
@@ -12,41 +14,41 @@
 
 `git commit -m 'Initial commit.'`
 
-## Branches
+### Branches
 
-### Checking out a new branch -
+#### Checking out a new branch
 
 `git checkout -b development`
 
-### Add all files, then commit changes -
+#### Add all files, then commit changes
 
 `git add .`
 
 `git commit -m 'Added files to development branch.'`
 
-### List all branches with -
+#### List all branches
 
 `git branch`
 
-### Change branches with -
+#### Change branches
 
 `git checkout master` (or whatever branch you want)
 
-## Merging
+### Merging
 
 Merge branches (this example is merging development branch with master branch, make sure you've checked out the master branch first) -
 
 `git merge development`
 
-## Cloning a repo from remote server
+### Cloning
 
-Make sure you've checked out another branch on the remote server that isn't the master branch, say a development branch, otherwise you'll get an error.
+Make sure you're not trying to clone a branch on the remote server that is already checked out, otherwise you'll get an error.
 
 **NOTE:** This dosen't matter if cloning a bare repo.
 
 `git clone ssh://user@loe.org:/git/repo nameofbranch`
 
-### Make changes, then push back to server -
+#### Make changes, then push back to server
 
 `git add .`
 
@@ -54,17 +56,17 @@ Make sure you've checked out another branch on the remote server that isn't the 
 
 `git push`
 
-Or you could rsync all files between servers, then init a git repo in the directory holding the files. Then use the following to push any changes to a new branch on the remote server -
+Or you could `rsync` all files between servers, then init a git repo in the directory holding the files. Then push any changes to a new branch on the remote server -
 
 `git push user@loe.org:/git/repo -b newbranch`
 
-## Git log
+### Git log
 
 `git log`
 
 Lists all commits and commit messages. The first 4 characters of a commit hash allow you to identify and work with specific commits.
 
-### Example workflow
+#### Example workflow
 
 Use `git log` to find a specific commit -
 
@@ -74,17 +76,21 @@ Use `git log` to find a specific commit -
 
 	    Added Irssi.
 
-To checkout that commit, use the first 4 characters of the commit hash -
+To checkout that commit, `checkout` using the commit hash  -
+
+`git checkout ba6af9e85675a974917a86488bc81fcd3252d1a8`
+
+Or just using the first 4 characters (or however many characters you want) -
 
 `git checkout ba6a`
 
-## Misc commands
+### Misc commands
 
-### Undo unstaged changes to files -
+#### Undo unstaged changes to files
 
 `git checkout .`
 
-### Add new files and auto rm deleted files from staging -
+#### Add new files and auto `rm` deleted files from staging
 
 `git add -A`
 
@@ -92,11 +98,11 @@ or
 
 `git add -u`
 
-### Revert to a specific commit and update commit message with info about the revert -
+#### Revert to a specific commit and update commit message with info about the revert
 
 `git revert 93b1`
 
-### Misc - to edit and sort -
+#### Misc - to edit and sort
 
 `git bundle create some file HEAD`
 
@@ -104,17 +110,21 @@ or
 
 `git apply < my.patch`
 
-`git reset --hard`: load an old save and delete all saved games newer than the one just loaded.
+`git reset --hard`
 
-## git stash
+### git stash
 
 `git stash` - save the changes you have made without commiting them
 
 `git stash list` - list of your stash
 
-`git stash apply` - bring back the stash to current branch
+`git stash apply` - bring back most recent stash to current branch
 
-`git stash drop NAMEOFSTASH` - drop specified stash
+`git stash apply @{2}` - bring back a specific stash
+
+`git stash pop` - bring back the most recent stash and immediately `drop` the stash
+
+`git stash drop stash@{2}` - drop specific stash
 
 ## GitHub
 
@@ -150,7 +160,7 @@ After repo is made, set local repo to push to GitHub repo -
 
 `git remote add origin git@github.com:Your-Username/awesomeProject.git`
 
-To push to GitHub from local machine, enter the following command -
+To push to GitHub from local machine -
 
 `git push -u origin master`
 
