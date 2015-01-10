@@ -62,9 +62,15 @@ Or you could `rsync` all files between servers, then init a git repo in the dire
 
 ### Git log
 
+Print past commits - 
+
 `git log`
 
-Lists all commits and commit messages. The first 4 characters of a commit hash allow you to identify and work with specific commits.
+Print a single line for each past commit -
+
+`git log --pretty=oneline`
+
+### Checkout specific commit
 
 #### Example workflow
 
