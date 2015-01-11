@@ -40,6 +40,26 @@ Merge branches (this example is merging development branch with master branch, m
 
 `git merge development`
 
+#### Squash
+
+Merge a branch as one commit.
+
+#### Example workflow
+
+Working on example branch `dev`
+
+`git checkout master`
+
+`git merge --squash dev`
+
+This will present editor to allow you to enter a commit message that includes all commit messages for the `dev` branch -
+
+`git commit`
+
+Or, this will just use your commit message without the messages from `dev` branch - 
+
+`git commit -m "Your commit message"`
+
 ### Cloning
 
 Make sure you're not trying to clone a branch on the remote server that is already checked out, otherwise you'll get an error.
