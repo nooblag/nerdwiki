@@ -34,6 +34,14 @@
 
 `git checkout master` (or whatever branch you want)
 
+#### Deleting branches
+
+`git branch -d nameOfBranch`
+
+##### Delete remote branch
+
+`git push origin --delete nameOfBranch`
+
 ### Merging
 
 Merge branches (this example is merging development branch with master branch, make sure you've checked out the master branch first) -
