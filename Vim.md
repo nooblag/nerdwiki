@@ -50,6 +50,14 @@ Delete lines with a pattern -
 
 `:g/whattodelete/d`
 
+### Find and Replace
+
+In command mode - 
+
+`%s/old-text/new-text/g`
+
+NOTE - `%s` performs command on every line in file.
+
 ### Highlight a word
 
 (in command mode)
