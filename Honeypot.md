@@ -38,3 +38,7 @@ Edit .cfg file to connect to MySQL database -
         databse = kippo
         username = kippo
         password = secret
+
+# Artillery Honeypot
+
+Tutorial [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-artillery-honeypot-on-an-ubuntu-vps). Ideas?
