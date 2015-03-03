@@ -50,9 +50,24 @@ Make sure :/Protocol says "Protocol 2"
 #### Reboot
 Setup DNS for the new subdomain and reboot. Does key login work okay?
 
+### 2.? Set up new users and sudo
+`adduser username`
+
+Set up a home directory if needed.
+
+`mkdir /home/username`
+
+`chown username:users /home/username`
+
+`apt-get install sudo` if sudo not installed.
+
+Run `visudo` and add this to the list to enable sudo for that user:
+
+`username ALL=(ALL) ALL`
+
 ---
 
-### 2.2 Run the script?
+### 2.? Run the script?
 The script sets up nginx, php-fpm and mysql?
 
 ### 2.? Rsync /var/www/ from old server to new server
