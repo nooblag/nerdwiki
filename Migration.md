@@ -47,6 +47,9 @@ Make sure :/Protocol says "Protocol 2"
 
 #### Change port
 
+#### Reboot
+Setup DNS for the new subdomain and reboot. Does key login work okay?
+
 ---
 
 ### 2.2 Run the script?
@@ -57,7 +60,7 @@ The script sets up nginx, php-fpm and mysql?
 
 Test with `-n` or `--dry-run` first.
 
-Use -varlpEAogzhP as: (v) verbose, (a) archive, (r) recursive, (l) sym links, (p) preserve permissions, (E) preserve the file's executability, (A) preserve ACLs (implies --perms), (o) preserve owner, (g) preserve group, (z) compress, (h) human readable output numbers, (P) keep partially transferred files AND show progress during transfer
+Use *-varlpEAogzhP* as: (v) verbose, (a) archive, (r) recursive, (l) sym links, (p) preserve permissions, (E) preserve the file's executability, (A) preserve ACLs (implies --perms), (o) preserve owner, (g) preserve group, (z) compress, (h) human readable output numbers, (P) keep partially transferred files AND show progress during transfer
 
 ### 2.? Setting up mysql
 
@@ -69,7 +72,8 @@ add user, setup the databse and grant permissions
 
 > mysql> `GRANT ALL PRIVILEGES ON thoughtm_databasename.* TO 'thoughtm_username'@'localhost' IDENTIFIED BY 'PasswordHere';`
 
-import the sql dump
+Import the SQL dump:
+
 `mysql -u thoughtm_username -p thoughtm_databasename < thoughtm_databasename.sql`
 
 ---
