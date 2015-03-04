@@ -18,7 +18,7 @@ awstats | /etc/awstats/
  
 This is a good backup line for whole system:
 
-`rsync -aAXrvzhn -e "ssh -p PORT" --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found", "sysconfig/"} root@sub.domain.com:/ /home/n/Projects/domain/backups/NAMEOFHOST/`
+`rsync -aAXvzh --dry-run -e "ssh -p PORT" --exclude={/dev,/proc,/sys,/tmp,/run,/mnt,/media,/lost+found,sysconfig/} user@server:/ /path/to/backup/folder/`
  
 ### 1.? Have a look at things that have recently been modified:
 `ls -larst`
@@ -83,6 +83,9 @@ The script sets up nginx, php-fpm and mysql?
 Test with `-n` or `--dry-run` first.
 
 Use *-varlpEAogzhP* as: (v) verbose, (a) archive, (r) recursive, (l) sym links, (p) preserve permissions, (E) preserve the file's executability, (A) preserve ACLs (implies --perms), (o) preserve owner, (g) preserve group, (z) compress, (h) human readable output numbers, (P) keep partially transferred files AND show progress during transfer
+
+#### Also rsync /home for user data.
+`rsync -varlpEAogzhP -e "ssh -p PORT" /home/ root@sub.domain.com:/home/`
 
 ### 2.? Setting up mysql
 
@@ -178,3 +181,8 @@ Verify with:
 
 ## ?. Install fail2ban
 `apt-get install fail2ban`
+
+---
+
+## ?. Move user data to new server
+Login to old VPS and rsync over /home/
