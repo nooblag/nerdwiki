@@ -124,7 +124,43 @@ Make sure `/etc/hostname` `/etc/mailname/` are set to: `subdomain.thoughtm.com` 
 #### Copy over record of archived stats
 `rsync -varlpEAogzhP -e "ssh -p PORT" /var/lib/awstats/thoughtm.com/ root@subdomain.thoughtm.com:/var/lib/awstats/thoughtm.com/`
 
-### Check for the thing that rotates logs cos that's where you put the awstats command (what is it) to run every night
+#### Setup awstats to update before log rotate
+Some info [here](http://awstats.sourceforge.net/docs/awstats_faq.html#ROTATE), but basically, you add this line `/usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl > /dev/null 2>&1` to */etc/logrotate.d/nginx* which runs before the nginx logs rotate. I like to use /dev/null as this keeps things quiet. Put it in place prerotate so it looks something like:
+
+```nginx
+/var/log/nginx/*.log {
+        daily
+        missingok
+        rotate 30
+        compress
+        delaycompress
+        notifempty
+        create 0640 www-data adm
+        sharedscripts
+
+        #email a copy of the log to here
+        #mail someone@thoughtm.com
+
+        prerotate
+                #jore - run perl script that updates ALL awstats configs before rotating logs, old single domain below commented out
+                /usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl > /dev/null 2>&1
+                #/usr/lib/cgi-bin/awstats.pl -config=thoughtm.com -update -dir=/dev/null
+
+                if [ -d /etc/logrotate.d/httpd-prerotate ]; then \
+                        run-parts /etc/logrotate.d/httpd-prerotate; \
+                fi \
+        endscript
+
+        postrotate
+                [ ! -f /run/nginx.pid ] || kill -USR1 `cat /run/nginx.pid`
+        endscript
+}
+```
+#### Install IP and GeoIPFree plugins for awstats
+`apt-get install libnet-ip-perl libgeo-ipfree-perl`
+
+#### Working?
+Check in browser to see if all is working and awstats does dynamic compile by clicking on the "Update now" link.
 
 ---
 
@@ -134,3 +170,8 @@ Make sure `/etc/hostname` `/etc/mailname/` are set to: `subdomain.thoughtm.com` 
 Verify with:
 
 `date`
+
+---
+
+## ?. Install fail2ban
+`apt-get install fail2ban`
