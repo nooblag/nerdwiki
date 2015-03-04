@@ -211,3 +211,32 @@ have a look at `/etc/update-motd.d/00-header` (whats going on there?)
 `/etc/init.d/ssh restart` if done properly, won't all disappear on reboot!
 
 ---
+
+## Fiddle with memcached
+Some notes [here](http://www.nginxtips.com/improving-wordpress-performance-nginx-php-fpm-mysql-memcached-w3-total-cache/). Add this to main nginx conf:
+
+	Cache most accessed static files
+	open_file_cache          max=10000 inactive=10m;
+	open_file_cache_valid    2m;
+	open_file_cache_min_uses 1;
+	open_file_cache_errors   on;
+
+Make sure nginx is passing .php to php-fpm by:
+
+	location ~ .php$ {
+	root /path/to/your/yourwebsite.com;
+	try_files $uri =404;
+	fastcgi_pass unix:/tmp/php5-fpm.sock;
+	fastcgi_index index.php;
+	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	include fastcgi_params;
+	}
+
+---
+
+## Opcache for PHP
+http://php.net/manual/en/opcache.installation.php
+
+"APC is a great way to speed up the execution of php scripts. Apc compiles php code and keeps the opcode in memory and uses it next time without compiling the same php code again from file. This drastically speeds up execution. Apart from opcode cache, apc also offers a user cache to store raw data for the php application in memory."
+
+"Php as of version 5.5 has new feature called OPcache which does the same thing as apc opcode cache thereby deprecating apc."
