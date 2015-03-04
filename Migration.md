@@ -25,7 +25,7 @@ This is a good backup line for whole system:
  
 
 ### 1.? Dump mysql
-`mysqldump`
+`mysqldump -u databaseuser -p databasename > databasename.sql`
 
 ---
 
