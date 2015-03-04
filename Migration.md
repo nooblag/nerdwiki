@@ -52,7 +52,15 @@ Edit `nano /etc/ssh/sshd_config`
 
 Make sure :/Protocol says "Protocol 2"
 
-#### Change port
+##### Enable login only for certain users -
+
+	Authentication:
+	LoginGraceTime 120
+	PermitRootLogin no
+	AllowUsers jl eggdrop jore
+	StrictModes yes
+
+##### Change port
 
 #### Reboot
 Setup DNS for the new subdomain and reboot. Does key login work okay?
@@ -184,5 +192,22 @@ Verify with:
 
 ---
 
-## ?. Move user data to new server
-Login to old VPS and rsync over /home/
+## ?. Change login banner
+
+Move old file as backup, `sudo mv /etc/motd /etc/motd.bak`
+
+Create new `/etc/motd` file (post-login message), save.
+
+Add/edit following line in `/etc/default/rcS` -- `EDITMOTD=no`
+
+`sudo nano /etc/ssh/sshd_config` and uncomment the Banner line with `/etc/issue.net`
+
+`sudo nano /etc/issue.net` -- displayed on connect, pre-login
+
+`sudo nano /etc/motd` -- displayed post-login
+
+have a look at `/etc/update-motd.d/00-header` (whats going on there?)
+
+`/etc/init.d/ssh restart` if done properly, won't all disappear on reboot!
+
+---
