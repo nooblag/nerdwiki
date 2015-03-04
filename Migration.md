@@ -12,12 +12,16 @@ Service | Path to conf and/or other needed files
 nginx | /etc/nginx/sites-available/
  | /etc/nginx/ssl/ (certificates)
 php | ?? php.ini
-exim4 | ??
+exim4 | /etc/exim4/
 awstats | /etc/awstats/
  | /var/lib/awstats/
  
+ 
+### 1.? Have a look at things that have recently been modified:
+`ls -larst`
+ 
 
-### 1.1 Dump mysql
+### 1.? Dump mysql
 `mysqldump`
 
 ---
@@ -106,23 +110,27 @@ If 403 error, check that nginx is listening for the subdomain properly
 
 Make sure `/etc/hostname` `/etc/mailname/` are set to: `subdomain.thoughtm.com` and that `/etc/hosts` is properly set to point to localhost and subdomain.thoughtm.com NOT the FQDN. This is so mail can be accepted at the external mailboxes (someone@thoughtm.com) instead of local users.
 
+#### Rsync over confs and settings from old server:
+`rsync -varlpEAogzhP -e "ssh -p PORT" /etc/exim4/ root@subdomain.thoughtm.com:/etc/exim4/`
+
 ---
 
 ## ?. Setting up Awstats
 `apt-get install awstats python`
 
-Copy confs from:
-rsync -varlpEAogzhP -e "ssh -p PORT" /etc/awstats/ root@subdomain.thoughtm.com:/etc/awstats/
+#### Copy confs from:
+`rsync -varlpEAogzhP -e "ssh -p PORT" /etc/awstats/ root@subdomain.thoughtm.com:/etc/awstats/`
 
-record of stats
-rsync -varlpEAogzhP -e "ssh -p PORT" /var/lib/awstats/thoughtm.com/ root@subdomain.thoughtm.com:/var/lib/awstats/thoughtm.com/
+#### Copy over record of archived stats
+`rsync -varlpEAogzhP -e "ssh -p PORT" /var/lib/awstats/thoughtm.com/ root@subdomain.thoughtm.com:/var/lib/awstats/thoughtm.com/`
 
-
-Check for the thing that rotates logs cos that's where you put the awstats command (what is it) to run every night
+### Check for the thing that rotates logs cos that's where you put the awstats command (what is it) to run every night
 
 ---
 
 ## ?. Setting new server timezone
 `dpkg-reconfigure tzdata`
 
-Verify with: `date`
+Verify with:
+
+`date`
