@@ -16,6 +16,9 @@ exim4 | /etc/exim4/
 awstats | /etc/awstats/
  | /var/lib/awstats/
  
+This is a good backup line for whole system:
+
+`rsync -aAXrvzhn -e "ssh -p PORT" --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found", "sysconfig/"} root@sub.domain.com:/ /home/n/Projects/domain/backups/NAMEOFHOST/`
  
 ### 1.? Have a look at things that have recently been modified:
 `ls -larst`
@@ -40,7 +43,7 @@ If needed, set up new keys on the local computer you want to hook up to the new 
 Follow the prompts, store as **id_rsa** with no passphrase.
 
 #### Find local key, copy to new server
-Run locally: `ssh-copy-id [serveruser]@[subdomain.thoughtm.com]`
+Run locally: `ssh-copy-id [serveruser]@[sub.domain.com]`
 
 #### Add keys to 'authorized_hosts'
 
@@ -75,7 +78,7 @@ Run `visudo` and add this to the list to enable sudo for that user:
 The script sets up nginx, php-fpm and mysql?
 
 ### 2.? Rsync /var/www/ from old server to new server
-`rsync -varlpEAogzhP -e "ssh -p PORT" /var/www/ root@subdomain.thoughtm.com:/var/www/`
+`rsync -varlpEAogzhP -e "ssh -p PORT" /var/www/ root@sub.domain.com:/var/www/`
 
 Test with `-n` or `--dry-run` first.
 
@@ -87,13 +90,13 @@ add user, setup the databse and grant permissions
 
 `mysql -u root -p`
 
-> mysql> `create database thoughtm_databasename;`
+> mysql> `create database domain_databasename;`
 
-> mysql> `GRANT ALL PRIVILEGES ON thoughtm_databasename.* TO 'thoughtm_username'@'localhost' IDENTIFIED BY 'PasswordHere';`
+> mysql> `GRANT ALL PRIVILEGES ON domain_databasename.* TO 'domain_username'@'localhost' IDENTIFIED BY 'PasswordHere';`
 
 Import the SQL dump:
 
-`mysql -u thoughtm_username -p thoughtm_databasename < thoughtm_databasename.sql`
+`mysql -u domain_username -p domain_databasename < domain_databasename.sql`
 
 ---
 
@@ -108,10 +111,10 @@ If 403 error, check that nginx is listening for the subdomain properly
 
 `apt-get install exim4`
 
-Make sure `/etc/hostname` `/etc/mailname/` are set to: `subdomain.thoughtm.com` and that `/etc/hosts` is properly set to point to localhost and subdomain.thoughtm.com NOT the FQDN. This is so mail can be accepted at the external mailboxes (someone@thoughtm.com) instead of local users.
+Make sure `/etc/hostname` `/etc/mailname/` are set to: `sub.domain.com` and that `/etc/hosts` is properly set to point to localhost and sub.domain.com NOT the FQDN. This is so mail can be accepted at the external mailboxes (someone@domain.com) instead of local users.
 
 #### Rsync over confs and settings from old server:
-`rsync -varlpEAogzhP -e "ssh -p PORT" /etc/exim4/ root@subdomain.thoughtm.com:/etc/exim4/`
+`rsync -varlpEAogzhP -e "ssh -p PORT" /etc/exim4/ root@sub.domain.com:/etc/exim4/`
 
 ---
 
@@ -119,10 +122,10 @@ Make sure `/etc/hostname` `/etc/mailname/` are set to: `subdomain.thoughtm.com` 
 `apt-get install awstats python`
 
 #### Copy confs from:
-`rsync -varlpEAogzhP -e "ssh -p PORT" /etc/awstats/ root@subdomain.thoughtm.com:/etc/awstats/`
+`rsync -varlpEAogzhP -e "ssh -p PORT" /etc/awstats/ root@sub.domain.com:/etc/awstats/`
 
 #### Copy over record of archived stats
-`rsync -varlpEAogzhP -e "ssh -p PORT" /var/lib/awstats/thoughtm.com/ root@subdomain.thoughtm.com:/var/lib/awstats/thoughtm.com/`
+`rsync -varlpEAogzhP -e "ssh -p PORT" /var/lib/awstats/domain.com/ root@sub.domain.com:/var/lib/awstats/domain.com/`
 
 #### Setup awstats to update before log rotate
 Some info [here](http://awstats.sourceforge.net/docs/awstats_faq.html#ROTATE), but basically, you add this line `/usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl > /dev/null 2>&1` to */etc/logrotate.d/nginx* which runs before the nginx logs rotate. I like to use /dev/null as this keeps things quiet. Put it in place prerotate so it looks something like:
@@ -139,12 +142,12 @@ Some info [here](http://awstats.sourceforge.net/docs/awstats_faq.html#ROTATE), b
         sharedscripts
 
         #email a copy of the log to here
-        #mail someone@thoughtm.com
+        #mail someone@domain.com
 
         prerotate
                 #jore - run perl script that updates ALL awstats configs before rotating logs, old single domain below commented out
                 /usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl > /dev/null 2>&1
-                #/usr/lib/cgi-bin/awstats.pl -config=thoughtm.com -update -dir=/dev/null
+                #/usr/lib/cgi-bin/awstats.pl -config=domain.com -update -dir=/dev/null
 
                 if [ -d /etc/logrotate.d/httpd-prerotate ]; then \
                         run-parts /etc/logrotate.d/httpd-prerotate; \
