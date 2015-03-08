@@ -76,6 +76,8 @@ Set up a home directory if needed.
 
 `apt-get install sudo` if sudo not installed.
 
+If you get error about CD, check /etc/apt/sources.list and remove the disc as a source if need be.
+
 Run `visudo` and add this to the list to enable sudo for that user:
 
 `username ALL=(ALL) ALL`
