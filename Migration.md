@@ -1,11 +1,11 @@
 # Migration
-A basic migration, based on thmb. Pretty much follow this sequence?
+A basic migration, based on jore's set-up which is based on jl's setup. Pretty much follow this sequence?
 
 `This` is stuff you type.
 
 ## 1. Prepare old server
 
-Fetch the following config files and other settings:
+List of config files and other settings that have been customised:
 
 Service | Path to conf and/or other needed files
 --- | ---
@@ -21,7 +21,7 @@ This is a good backup line for whole system:
 
 `rsync -aAXvzh --dry-run -e "ssh -p PORT" --exclude={/dev,/proc,/sys,/tmp,/run,/mnt,/media,/lost+found,sysconfig/} user@server:/ /path/to/backup/folder/`
  
-### 1.? Have a look at things that have recently been modified:
+#### To have a look at things that have recently been modified:
 `ls -larst`
  
 
@@ -44,9 +44,7 @@ If needed, set up new keys on the local computer you want to hook up to the new 
 Follow the prompts, store as **id_rsa** with no passphrase.
 
 #### Find local key, copy to new server
-Run locally: `ssh-copy-id [serveruser]@[sub.domain.com]`
-
-#### Add keys to 'authorized_hosts'
+Run locally: `ssh-copy-id [serveruser]@[sub.domain.com]` (adds keys to 'authorized_hosts', etc)
 
 #### Disable root login
 Edit `nano /etc/ssh/sshd_config`
@@ -68,7 +66,7 @@ Setup DNS for the new subdomain and reboot. Does key login work okay?
 
 If old key doesn't work, you might need to run `ssh-add`
 
-### 2.? Set up new users and sudo
+### 2.? Set up new users and *sudo*
 `adduser username`
 
 Set up a home directory if needed.
@@ -88,16 +86,16 @@ Run `visudo` and add this to the list to enable sudo for that user:
 ---
 
 ### 2.? Run the script?
-The script sets up nginx, php-fpm and mysql?
+The script sets up nginx, php-fpm and mysql. At the moment, it's in */root*, run with `bash LEMP*`, follow the prompts, etc.
 
 ### 2.? Rsync /var/www/ from old server to new server
 `rsync -varlpEAogzhP -e "ssh -p PORT" /var/www/ root@sub.domain.com:/var/www/`
 
-Test with `-n` or `--dry-run` first.
+Test with `-n` or `--dry-run` first!
 
 Use *-varlpEAogzhP* as: (v) verbose, (a) archive, (r) recursive, (l) sym links, (p) preserve permissions, (E) preserve the file's executability, (A) preserve ACLs (implies --perms), (o) preserve owner, (g) preserve group, (z) compress, (h) human readable output numbers, (P) keep partially transferred files AND show progress during transfer
 
-#### Also rsync /home for user data.
+#### Also rsync */home* for user data.
 `rsync -varlpEAogzhP -e "ssh -p PORT" /home/ root@sub.domain.com:/home/`
 
 ### 2.? Setting up mysql
@@ -276,24 +274,38 @@ Make sure nginx is passing .php to php-fpm by:
 
 ---
 
-## Opcache for PHP
-http://php.net/manual/en/opcache.installation.php
-
-"APC is a great way to speed up the execution of php scripts. Apc compiles php code and keeps the opcode in memory and uses it next time without compiling the same php code again from file. This drastically speeds up execution. Apart from opcode cache, apc also offers a user cache to store raw data for the php application in memory."
-
-"Php as of version 5.5 has new feature called OPcache which does the same thing as apc opcode cache thereby deprecating apc."
-
----
-
 ## Backup ideas
+#### Backup user
 Remove default backup user: `userdel -r backup` and clear out any other default users that are not wanted too, if you like, such as *games*, *news*, etc.
 
 Add new user called backup: `adduser backup`
 
 Set up a home directory for this account: `mkdir /home/backup` and `chown backup:backup /home/backup`
 
-Set up *sudo* for the backup user but can only use *sudo* with the *rsync* command only (we need this to move things out of /var/www). Also set this up so *sudo* for *rsync* can be run without password as we'll be using this inside bash scripts that backup will run with crontabs. Run `visudo` and add this line: `backup  ALL=NOPASSWD: /usr/bin/rsync`
+The *makebackup* bash script file gets placed into /home/backup.
+
+#### Some security
+Set up *sudo* for the backup user but so that it can only use *sudo* with the *rsync* command and nothing else (we need *sudo* for *rsync* to move things out of /var/www). Also set this up so the *sudo* can be run without password as we'll be using this inside bash scripts that backup will run with crontabs. Run `visudo` and add this line: `backup  ALL=NOPASSWD: /usr/bin/rsync`
 
 Make sure the backup user cannot be used to login. Check *AllowUsers* in `nano /etc/ssh/sshd_config`
+
+#### Allow backup user to get around automatically
+Set up a SSH key for backup user and add to remote host: `mkdir ~/.ssh; chmod 700 ~/.ssh;` and `ssh-keygen -t rsa` and `ssh-copy-id [serveruser]@[sub.domain.com]`. You may also need to run the `ssh-copy-id` as root to get those keys to the remote server too (to cover the rsync that runs as sudo).
+
+Check you can SSH into the remote host properly as the bash script will need this to avoid hiccups.
+
+#### Add the *makebackup* bash script to crontab
+We want to run the *makebackup* script every arvo at around 5:30pm, our time (should also be localserver time, check this is set and clocks are the same!), as 5:30pm AUD is the offpeak time for site according to logs from *awstats*.
+
+Edit crontab for backup user `crontab -u backup -e`, add this:
+```
+MAILTO="someone@somewhere.com"
+30 17 * * * bash makebackup
+```
+
+Also set another cronjob to cleanup the sqldumps every 7 days, starts at 6pm:
+```
+0 18 */7 * * rm -v /home/backup/thoughtm_publish-*
+```
 
 ---
