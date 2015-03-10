@@ -11,7 +11,8 @@ Service | Path to conf and/or other needed files
 --- | ---
 nginx | /etc/nginx/sites-available/
  | /etc/nginx/ssl/ (certificates)
-php | ?? php.ini
+php5-fpm | /etc/php5/fpm/php.ini
+ | /etc/php5/fpm/conf.d/20-apc.ini
 exim4 | /etc/exim4/
 awstats | /etc/awstats/
  | /var/lib/awstats/
@@ -64,6 +65,8 @@ Make sure :/Protocol says "Protocol 2"
 
 #### Reboot
 Setup DNS for the new subdomain and reboot. Does key login work okay?
+
+If old key doesn't work, you might need to run `ssh-add`
 
 ### 2.? Set up new users and sudo
 `adduser username`
@@ -129,10 +132,47 @@ Make sure `/etc/hostname` `/etc/mailname/` are set to: `sub.domain.com` and that
 #### Rsync over confs and settings from old server:
 `rsync -varlpEAogzhP -e "ssh -p PORT" /etc/exim4/ root@sub.domain.com:/etc/exim4/`
 
+#### Set up aliases to forward all mail for root to external address:
+`nano /etc/aliases`
+
+Edit the file thus:
+
+```
+# /etc/aliases
+mailer-daemon: postmaster
+postmaster: root
+nobody: root
+hostmaster: root
+usenet: root
+news: root
+webmaster: root
+www: root
+ftp: root
+abuse: root
+noc: root
+security: root
+backup: root
+root: someaddress@someotherplace.com
+```
+#### May need to run configure to set up the new server not to accept any mail locally.
+`dpkg-reconfigure exim4-config`
+
+"Internet site; mail is sent and received directly using SMTP" [Enter]
+
+"sub.domain.com" [Enter]
+
+"Listen on 127.0.0.1 ; ::1" [Enter]
+
+Wipe out all other destinations where mail should be accepted. [Enter]
+
+Don't relay mail. [Enter]
+
 ---
 
 ## ?. Setting up Awstats
-`apt-get install awstats python`
+`apt-get install awstats`
+
+`apt-get install python`
 
 #### Copy confs from:
 `rsync -varlpEAogzhP -e "ssh -p PORT" /etc/awstats/ root@sub.domain.com:/etc/awstats/`
@@ -242,3 +282,18 @@ http://php.net/manual/en/opcache.installation.php
 "APC is a great way to speed up the execution of php scripts. Apc compiles php code and keeps the opcode in memory and uses it next time without compiling the same php code again from file. This drastically speeds up execution. Apart from opcode cache, apc also offers a user cache to store raw data for the php application in memory."
 
 "Php as of version 5.5 has new feature called OPcache which does the same thing as apc opcode cache thereby deprecating apc."
+
+---
+
+## Backup ideas
+Remove default backup user: `userdel -r backup` and clear out any other default users that are not wanted too, if you like, such as *games*, *news*, etc.
+
+Add new user called backup: `adduser backup`
+
+Set up a home directory for this account: `mkdir /home/backup` and `chown backup:backup /home/backup`
+
+Set up *sudo* for the backup user but can only use *sudo* with the *rsync* command only (we need this to move things out of /var/www). Also set this up so *sudo* for *rsync* can be run without password as we'll be using this inside bash scripts that backup will run with crontabs. Run `visudo` and add this line: `backup  ALL=NOPASSWD: /usr/bin/rsync`
+
+Make sure the backup user cannot be used to login. Check *AllowUsers* in `nano /etc/ssh/sshd_config`
+
+---
