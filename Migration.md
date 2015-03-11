@@ -315,4 +315,7 @@ Also set another cronjob to cleanup the sqldumps every 7 days, starts at 6pm:
 0 18 */7 * * rm -v /home/backup/thoughtm_publish-*
 ```
 
+#### Cronic
+May want to [investigate](http://habilis.net/cronic/) *cronic* if crontab emails become annoying (more than likely).
+
 ---
