@@ -165,6 +165,9 @@ Wipe out all other destinations where mail should be accepted. [Enter]
 
 Don't relay mail. [Enter]
 
+#### Working?
+`mail -s Test address@domain.com < "This is a test."`
+
 ---
 
 ## ?. Setting up Awstats
