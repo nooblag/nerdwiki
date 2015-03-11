@@ -210,6 +210,10 @@ Some info [here](http://awstats.sourceforge.net/docs/awstats_faq.html#ROTATE), b
         endscript
 }
 ```
+
+#### Remove the awstats cron since we're doing log rotate instead
+`rm /etc/cron.d/awstats`
+
 #### Install IP and GeoIPFree plugins for awstats
 `apt-get install libnet-ip-perl libgeo-ipfree-perl`
 
