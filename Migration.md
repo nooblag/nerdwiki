@@ -168,6 +168,9 @@ Don't relay mail. [Enter]
 #### Working?
 `mail -s Test address@domain.com < "This is a test."`
 
+#### Emails from broken crontabs
+Check out `cd /etc/cron.d; ls -la` and may need to clean those files up or simply del them.
+
 ---
 
 ## ?. Setting up Awstats
