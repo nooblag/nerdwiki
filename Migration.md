@@ -321,4 +321,12 @@ Also set another cronjob to cleanup the sqldumps every 7 days, starts at 6pm:
 #### Cronic
 May want to [investigate](http://habilis.net/cronic/) *cronic* if crontab emails become annoying (more than likely).
 
+`cd /home/backup`
+
+`wget https://mrkmg.com/install_cronic.sh` and run `sh install_cronic.sh`
+
+Set permissions for the *makebackup* backup script: `chmod 755 makebackup; chown backup:backup makebackup`
+
+Replace now in crontab as: `cronic /home/backup/makebackup` instead of `bash /home/backup/makebackup`
+
 ---
