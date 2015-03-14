@@ -329,4 +329,7 @@ Set permissions for the *makebackup* backup script: `chmod 755 makebackup; chown
 
 Replace now in crontab as: `cronic /home/backup/makebackup` instead of `bash /home/backup/makebackup`
 
+##### If you get 'sdin not tty' kind of error at remote host:
+Add the following to *.bashrc* file in homedir: `[[ $- != *i* ]] && return`
+
 ---
