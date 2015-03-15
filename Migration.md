@@ -268,7 +268,7 @@ have a look at `/etc/update-motd.d/00-header` (whats going on there?)
 Used notes [here](http://www.pontikis.net/blog/install-memcached-php-debian) for initial setup, although this was for Apache.
 
 #### Prerequisites 
-Just rsync over *my.cnf* (there's custom settings in there for mysql which get used for memcached) and the rest in terms of handling and parsing is done in nginx confs that already exist. A sample config is [here](http://download.kyup.com/wordpress/conf.d) though. The `extension=memcache.so` should also be added to the *php.ini* which should also get rsync'd. Wordpress requires the NGINX Cache Optimizer plugin to use memcached.
+Just rsync over *my.cnf* (there's custom settings in there for mysql which get used for memcached) and the rest in terms of handling and parsing is done in nginx confs that already exist. A sample config is [here](http://download.kyup.com/wordpress/conf.d) though. Wordpress requires the [nginx cache optimizer plugin](https://wordpress.org/plugins/nginx-cache-optimizer/) to use memcached.
 
 `apt-get install memcached`
 
