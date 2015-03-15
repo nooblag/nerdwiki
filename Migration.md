@@ -13,9 +13,11 @@ nginx | /etc/nginx/sites-available/
  | /etc/nginx/ssl/ (certificates)
 php5-fpm | /etc/php5/fpm/php.ini
  | /etc/php5/fpm/conf.d/20-apc.ini
+mysql | /etc/mysql/my.cnf
 exim4 | /etc/exim4/
 awstats | /etc/awstats/
  | /var/lib/awstats/
+memcached | /etc/memcached.conf
  
 This is a good backup line for whole system:
 
@@ -263,24 +265,16 @@ have a look at `/etc/update-motd.d/00-header` (whats going on there?)
 ---
 
 ## Fiddle with memcached
-Some notes [here](http://www.nginxtips.com/improving-wordpress-performance-nginx-php-fpm-mysql-memcached-w3-total-cache/). Add this to main nginx conf:
+Used notes [here](http://www.pontikis.net/blog/install-memcached-php-debian) for initial setup, although this was for Apache.
 
-	Cache most accessed static files
-	open_file_cache          max=10000 inactive=10m;
-	open_file_cache_valid    2m;
-	open_file_cache_min_uses 1;
-	open_file_cache_errors   on;
+#### Prerequisites 
+Just rsync over *my.cnf* (there's custom settings in there for mysql which get used for memcached) and the rest in terms of handling and parsing is done in nginx confs that already exist. A sample config is [here](http://download.kyup.com/wordpress/conf.d) though. The `extension=memcache.so` should also be added to the *php.ini* which should also get rsync'd. Wordpress requires the NGINX Cache Optimizer plugin to use memcached.
 
-Make sure nginx is passing .php to php-fpm by:
+`apt-get install memcached`
 
-	location ~ .php$ {
-	root /path/to/your/yourwebsite.com;
-	try_files $uri =404;
-	fastcgi_pass unix:/tmp/php5-fpm.sock;
-	fastcgi_index index.php;
-	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-	include fastcgi_params;
-	}
+After installed, `nano /etc/memcached.conf` and check it. You may need to rsync older conf if any changes.
+
+Need to also install PHP extension: `apt-get install php5-memcached`
 
 ---
 
