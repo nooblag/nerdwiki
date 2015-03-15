@@ -165,6 +165,12 @@ Wipe out all other destinations where mail should be accepted. [Enter]
 
 Don't relay mail. [Enter]
 
+#### Working?
+`mail -s Test address@domain.com < "This is a test."`
+
+#### Emails from broken crontabs
+Check out `cd /etc/cron.d; ls -la` and may need to clean those files up or simply del them.
+
 ---
 
 ## ?. Setting up Awstats
@@ -210,6 +216,10 @@ Some info [here](http://awstats.sourceforge.net/docs/awstats_faq.html#ROTATE), b
         endscript
 }
 ```
+
+#### Remove the awstats cron since we're doing log rotate instead
+`rm /etc/cron.d/awstats`
+
 #### Install IP and GeoIPFree plugins for awstats
 `apt-get install libnet-ip-perl libgeo-ipfree-perl`
 
@@ -307,5 +317,19 @@ Also set another cronjob to cleanup the sqldumps every 7 days, starts at 6pm:
 ```
 0 18 */7 * * rm -v /home/backup/thoughtm_publish-*
 ```
+
+#### Cronic
+May want to [investigate](http://habilis.net/cronic/) *cronic* if crontab emails become annoying (more than likely).
+
+`cd /home/backup`
+
+`wget https://mrkmg.com/install_cronic.sh` and run `sh install_cronic.sh`
+
+Set permissions for the *makebackup* backup script: `chmod 755 makebackup; chown backup:backup makebackup`
+
+Replace now in crontab as: `cronic /home/backup/makebackup` instead of `bash /home/backup/makebackup`
+
+##### If you get 'sdin not tty' kind of error at remote host:
+Add the following to *.bashrc* file in homedir: `[[ $- != *i* ]] && return`
 
 ---
