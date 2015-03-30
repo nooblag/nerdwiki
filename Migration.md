@@ -237,6 +237,9 @@ Verify with:
 
 `date`
 
+##### Setting time and date
+`date -s "31 Mar 2015 18:00:00"`
+
 ---
 
 ## ?. Install fail2ban
