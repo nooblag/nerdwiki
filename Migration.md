@@ -285,46 +285,30 @@ Need to also install PHP extension: `apt-get install php5-memcached`
 #### Backup user
 Remove default backup user: `userdel -r backup` and clear out any other default users that are not wanted too, if you like, such as *games*, *news*, etc.
 
-Add new user called backup: `adduser backup`
-
-Set up a home directory for this account: `mkdir /home/backup` and `chown backup:backup /home/backup`
-
-The *makebackup* bash script file gets placed into /home/backup.
-
-#### Some security
-Set up *sudo* for the backup user but so that it can only use *sudo* with the *rsync* command and nothing else (we need *sudo* for *rsync* to move things out of /var/www). Also set this up so the *sudo* can be run without password as we'll be using this inside bash scripts that backup will run with crontabs. Run `visudo` and add this line: `backup  ALL=NOPASSWD: /usr/bin/rsync`
-
-Make sure the backup user cannot be used to login. Check *AllowUsers* in `nano /etc/ssh/sshd_config`
-
-#### Allow backup user to get around automatically
-Set up a SSH key for backup user and add to remote host: `mkdir ~/.ssh; chmod 700 ~/.ssh;` and `ssh-keygen -t rsa` and `ssh-copy-id [serveruser]@[sub.domain.com]`. You may also need to run the `ssh-copy-id` as root to get those keys to the remote server too (to cover the rsync that runs as sudo).
-
-Check you can SSH into the remote host properly as the bash script will need this to avoid hiccups.
-
-#### Add the *makebackup* bash script to crontab
-We want to run the *makebackup* script every arvo at around 5:30pm, our time (should also be localserver time, check this is set and clocks are the same!), as 5:30pm AUD is the offpeak time for site according to logs from *awstats*.
-
-Edit crontab for backup user `crontab -u backup -e`, add this:
-```
-MAILTO="someone@somewhere.com"
-30 17 * * * bash makebackup
-```
-
-Also set another cronjob to cleanup the sqldumps every 7 days, starts at 6pm:
-```
-0 18 */7 * * rm -v /home/backup/thoughtm_publish-*
-```
-
 #### Cronic
 May want to [investigate](http://habilis.net/cronic/) *cronic* if crontab emails become annoying (more than likely).
 
-`cd /home/backup`
-
 `wget https://mrkmg.com/install_cronic.sh` and run `sh install_cronic.sh`
 
-Set permissions for the *makebackup* backup script: `chmod 755 makebackup; chown backup:backup makebackup`
+Make sure *make* is executable: `chmod 755 make`
 
-Replace now in crontab as: `cronic /home/backup/makebackup` instead of `bash /home/backup/makebackup`
+#### Add the *make* bash script to crontab
+We want to run the *make* script every arvo at around 5:30pm, our time (should also be localserver time, check this is set and clocks are the same!), as 5:30pm AUD is the offpeak time for site according to logs from *awstats*.
+
+Edit crontab for backup user `crontab -u backup -e`, add this:
+```
+30 17 * * * cronic /location/of/backup/make
+```
+
+Also set another cronjob to cleanup any sqldumps that are over certain age. One on server side to cleanup every 14 days, another on remote side to cleanup maybe every two months. Time starts at 7:13pm. Make sure this is very much after *./backup/make* can be finished.
+
+Example -- 7:13pm, on 1st and 15th days of each month:
+
+`13 19 1,15 * * cronic find /location/of/backup/*.tar.gz -mtime +14 -delete`
+
+Example -- 7:15pm, on 1st day of every other month (*/2):
+
+`13 19 1 */2 * cronic find /location/of/backup/*.tar.gz -mtime +60 -delete`
 
 ##### If you get 'sdin not tty' kind of error at remote host:
 Add the following to *.bashrc* file in homedir: `[[ $- != *i* ]] && return`
