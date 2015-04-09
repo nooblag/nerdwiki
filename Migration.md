@@ -300,15 +300,9 @@ Edit crontab for backup user `crontab -u backup -e`, add this:
 30 17 * * * cronic /location/of/backup/make
 ```
 
-Also set another cronjob to cleanup any sqldumps that are over certain age. One on server side to cleanup every 14 days, another on remote side to cleanup maybe every two months. Time starts at 7:13pm. Make sure this is very much after *./backup/make* can be finished.
+Also set another cronjob to cleanup any sqldumps every day that are over certain age. Run each day to remove files that are say two weeks old on server side and then on the backup side perhaps cleanup files over 2 months old. Time for cleanup starts at 7:13pm to make sure this is very much after *./backup/make* can be finished.
 
-Example -- 7:13pm, on 1st and 15th days of each month:
-
-`13 19 1,15 * * cronic find /location/of/backup/*.tar.gz -mtime +14 -delete`
-
-Example -- 7:15pm, on 1st day of every other month (*/2):
-
-`13 19 1 */2 * cronic find /location/of/backup/*.tar.gz -mtime +60 -delete`
+`13 19 * * * cronic find /location/of/backup/*.tar.gz -mtime +14 -delete`
 
 ##### If you get 'sdin not tty' kind of error at remote host:
 Add the following to *.bashrc* file in homedir: `[[ $- != *i* ]] && return`
