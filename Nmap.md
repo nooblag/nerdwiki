@@ -18,13 +18,19 @@ Look for a specific port (and spoof IP) -
 
 `nmap -p80 -O 192.168.0.15 -D 192.168.0.88`
 
-## Ultimate nmap scan
+## Examples
+
+Scan for certain ports with verbose output, including software versions -
+
+`nmap -sT -PN -n -sV -p 22,80,143,25 nameofdomain.com`
+
+### Ultimate nmap scan
 
 Stolen from - http://richrines.com/post/10886870567/ultimate-nmap-scan
 
 `sudo nmap --spoof-mac Cisco --data-length 9 \ -f -D 172.168.200.200,RND:5,ME -v -n -O -sS -sV \ -oA /home/rich/metasploit/172.168.1.1 --log-errors \ -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 \ --randomize-hosts 192.178.1.1 172.168.1.2`
 
-### Flag by flag breakdown -
+#### Flag by flag breakdown -
 
 —spoof-mac Cisco: Spoof your mac address, other valid options would be a complete mac address, 0 for a completely random mac, a vendor’s OUI prefix, or another vendor name
 
