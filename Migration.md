@@ -272,20 +272,16 @@ Note: if you want to be a little bit more restrictive, you can also deny all out
 `ufw default deny outgoing`
 
 ####Allow Connections
-The syntax is pretty simple. If we turned on our firewall now, it would deny all incoming connections. If you’re connected over SSH to your server, that would be a problem because you would be locked out of your server. Let’s enable SSH connections to our server to prevent that from happening:
-
 `ufw allow ssh`
-
-As you can see, the syntax for adding services is pretty simple. UFW comes with some defaults for common uses. Our SSH command above is one example. It’s basically just shorthand for:
 
 `ufw allow 22/tcp`
 
 ####Other Connections We Might Need
 `ufw allow www`
 
-`ufw allow 873/tcp` for Rsync?
+`ufw allow 443/tcp` for SSL
 
-`ufw allow ssh`
+`ufw allow 873/tcp` for Rsync?
 
 ####Port Ranges
 You can also specify port ranges with UFW. To allow ports 1000 through 2000, use the command:
