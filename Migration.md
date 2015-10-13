@@ -250,6 +250,88 @@ Verify with:
 ## ?. Install Uncomplicated FireWall
 `apt-get install ufw`
 
+####Basic usage
+
+`ufw status`
+`ufw disable`
+`ufw enable`
+
+####Defaults
+UFW’s defaults are to deny all incoming connections and allow all outgoing connections. This means anyone trying to reach your server would not be able to connect, while any application within the server would be able to reach the outside world. To set the defaults used by UFW, you would use the following commands:
+
+`ufw default deny incoming`
+
+and
+
+`ufw default allow outgoing`
+
+Note: if you want to be a little bit more restrictive, you can also deny all outgoing requests as well. The necessity of this is debatable, but if you have a public-facing server, it could help prevent against any kind of remote shell connections. It does make your firewall more cumbersome to manage because you’ll have to set up rules for all outgoing connections as well. You can set this as the default with the following:
+
+`ufw default deny outgoing`
+
+####Allow Connections
+The syntax is pretty simple. If we turned on our firewall now, it would deny all incoming connections. If you’re connected over SSH to your server, that would be a problem because you would be locked out of your server. Let’s enable SSH connections to our server to prevent that from happening:
+
+`ufw allow ssh`
+
+As you can see, the syntax for adding services is pretty simple. UFW comes with some defaults for common uses. Our SSH command above is one example. It’s basically just shorthand for:
+
+`ufw allow 22/tcp`
+
+####Other Connections We Might Need
+`ufw allow www` or `ufw allow 80/tcp`
+
+####Port Ranges
+You can also specify port ranges with UFW. To allow ports 1000 through 2000, use the command:
+`ufw allow 1000:2000/tcp`
+
+If you want UDP:
+`ufw allow 1000:2000/udp`
+
+####IP Addresses
+You can also specify IP addresses. For example, if I wanted to allow connections from a specific IP address (say my work or home address), I’d use this command:
+
+`ufw allow from 192.168.255.255`
+
+####Denying Connections
+
+Our default set up is to deny all incoming connections. This makes the firewall rules easier to administer since we are only selectively allowing certain ports and IP addresses through. However, if you want to flip it and open up all your server’s ports (not recommended), you could allow all connections and then restrictively deny ports you didn’t want to give access to by replacing “allow” with “deny” in the commands above. For example:
+
+`ufw allow 80/tcp`
+
+would allow access to port 80 while:
+
+`ufw deny 80/tcp`
+
+would deny access to port 80.
+
+####Deleting Rules
+There are two options to delete rules. The most straightforward one is to use the following syntax:
+
+`ufw delete allow ssh`
+`ufw delete allow 80/tcp`
+
+or
+
+`ufw delete allow 1000:2000/tcp`
+
+This can get tricky when you have rules that are long and complex.
+
+A simpler, two-step alternative is to type:
+
+`ufw status numbered`
+
+which will have UFW list out all the current rules in a numbered list. Then, we issue the command:
+
+`ufw delete [number]`
+
+where “[number]” is the line number from the previous command.
+
+####Resetting Everything
+If you mess it all up:
+
+`ufw reset`
+
 ---
 
 ## ?. Change login banner
