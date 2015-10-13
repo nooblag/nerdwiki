@@ -253,7 +253,9 @@ Verify with:
 ####Basic usage
 
 `ufw status`
+
 `ufw disable`
+
 `ufw enable`
 
 ####Defaults
@@ -309,6 +311,7 @@ would deny access to port 80.
 There are two options to delete rules. The most straightforward one is to use the following syntax:
 
 `ufw delete allow ssh`
+
 `ufw delete allow 80/tcp`
 
 or
