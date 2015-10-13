@@ -247,6 +247,11 @@ Verify with:
 
 ---
 
+## ?. Install Uncomplicated FireWall
+`apt-get install ufw`
+
+---
+
 ## ?. Change login banner
 
 Move old file as backup, `sudo mv /etc/motd /etc/motd.bak`
@@ -282,15 +287,12 @@ Need to also install PHP extension: `apt-get install php5-memcached`
 ---
 
 ## Backup ideas
-#### Backup user
-Remove default backup user: `userdel -r backup` and clear out any other default users that are not wanted too, if you like, such as *games*, *news*, etc.
-
 #### Cronic
-May want to [investigate](http://habilis.net/cronic/) *cronic* if crontab emails become annoying (more than likely).
+Cronic is awesome. Will only send emails about cronjobs if they fail. [More here](http://habilis.net/cronic/).
 
 `wget https://mrkmg.com/install_cronic.sh` and run `sh install_cronic.sh`
 
-Make sure *make* is executable: `chmod 755 make`
+Our backup bash script is called *make*, ensure it's executable: `chmod 755 make`
 
 #### Add the *make* bash script to crontab
 We want to run the *make* script every arvo at around 5:30pm, our time (should also be localserver time, check this is set and clocks are the same!), as 5:30pm AUD is the offpeak time for site according to logs from *awstats*.
