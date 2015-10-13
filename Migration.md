@@ -281,7 +281,11 @@ As you can see, the syntax for adding services is pretty simple. UFW comes with 
 `ufw allow 22/tcp`
 
 ####Other Connections We Might Need
-`ufw allow www` or `ufw allow 80/tcp`
+`ufw allow www`
+
+`ufw allow 873/tcp` for Rsync?
+
+`ufw allow ssh`
 
 ####Port Ranges
 You can also specify port ranges with UFW. To allow ports 1000 through 2000, use the command:
