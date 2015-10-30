@@ -395,3 +395,14 @@ Also set another cronjob to cleanup any sqldumps every day that are over certain
 Add the following to *.bashrc* file in homedir: `[[ $- != *i* ]] && return`
 
 ---
+
+## htpasswd
+
+##### Create a new password file
+
+Following command creates a new file and stores a record in it for user Nooblag. We're prompted to create the password here. If the file exists and cannot be read, or cannot be written, it is not altered and htpasswd will display a message and return an error status.
+
+`htpasswd -c /home/pwww/.htpasswd jerry`
+
+##### Change or update password
+`htpasswd /home/pwww/.htpasswd-users tom`
