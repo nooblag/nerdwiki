@@ -1,3 +1,11 @@
+## rsync
+
+### Example usages
+
+Copy only certain files -
+
+`rsync -avPh {'file1.txt','file2.txt'} /target/directory`
+
 A nice backup line -
 
 `rsync -avzR --dry-run --exclude=home/YOU/{Media/Movies,Media/Music,Downloads,Backups,.local/share/Trash,.thumbnails,.cache,.mozilla/firefox/*.default/Cache,.mozilla/firefox/*.default/OfflineCache,.gvfs} /home/YOU /mnt/external/drive/place`
