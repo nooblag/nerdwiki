@@ -240,6 +240,9 @@ Verify with:
 ##### Setting time and date
 `date -s "31 Mar 2015 18:00:00"`
 
+##### Install NTP service to sync the clock
+`apt-get install ntp`
+
 ---
 
 ## ?. Install fail2ban
