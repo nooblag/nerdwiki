@@ -398,3 +398,14 @@ Also set another cronjob to cleanup any sqldumps every day that are over certain
 Add the following to *.bashrc* file in homedir: `[[ $- != *i* ]] && return`
 
 ---
+
+## More Cron
+An example of crontab. First runs script to clean the homepage cache every 5 minutes, others as above for backup purposes.
+
+```
+*/5 * * * * bash /location/of/clean-homepage-hypercache
+30 17 * * * cronic /location/of/backup/make
+13 19 * * * cronic find /location/of/backup/*.tar.gz -mtime +14 -delete
+```
+
+---
