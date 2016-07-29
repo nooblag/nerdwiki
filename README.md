@@ -1,9 +1,11 @@
-## nerdwiki
-
-Misc nerd gatherings.
+# nerdwiki
 
 By Josh Lapham [josh@joshlapham.com]
 
-.. and jore sometimes puts stuff in too.
+.. and [jore](https://github.com/nooblag) sometimes puts stuff in too.
 
-License: Beerware
+License: [Beerware](https://en.wikipedia.org/wiki/Beerware)
+
+## What This Is
+
+Miscellaneous nerd notes collected over the years for reference purposes.
