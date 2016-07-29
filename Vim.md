@@ -1,4 +1,4 @@
-## Vim
+## Basics
 
 ### Navigating
 
@@ -46,17 +46,17 @@ Type `:undol` to see a list of changes.
 
 `dd` deletes current line. Accepts an argument, e.g. `3dd` will delete current and next 2 lines beneath it.
 
-Delete lines with a pattern -
+Delete lines with a pattern:
 
 `:g/whattodelete/d`
 
 ### Find and Replace
 
-In command mode - 
+In command mode:
 
 `%s/old-text/new-text/g`
 
-NOTE - `%s` performs command on every line in file.
+__NOTE__ - `%s` performs command on every line in file.
 
 ### Highlight a word
 

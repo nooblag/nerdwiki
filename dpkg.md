@@ -1,7 +1,9 @@
-### Install a .deb
+## Example usages
 
-`sudo dpkg -i whatever.deb`
+### Install a `.deb` file
 
-If dpkg install fails due to missing dependencies, run -
+`sudo dpkg -i FILENAME.deb`
 
-`sudo apt-get -f install`
+## Troubleshooting
+
+If `dpkg` install fails due to missing dependencies, run: `sudo apt-get -f install`

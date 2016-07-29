@@ -1,3 +1,5 @@
+## Example usages
+
 Run as root or sudo.
 
 `ettercap -TQM arp:remote -i eth0 /192.168.0.3/ // -P remote_browser`
