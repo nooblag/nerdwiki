@@ -1,4 +1,6 @@
-Note that sed does not write to a file, only echos the result. Pipe to another file to save result.
+## Example usages
+
+__Note__ that `sed` does not write to a file, only echos the result. Pipe to another file to save result.
 
 ### Find and print
 

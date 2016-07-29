@@ -1,37 +1,35 @@
-# iptables
-
 ## Rules
 
-### Creating rules
+### Create
 
-Allow current and established connections -
+#### Allow current and established connections
 
 `iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT`
 
-Allow SSH connections to port 22 -
+#### Allow SSH connections to port 22
 
 `iptables -A INPUT -p tcp --dport 22 -j ACCEPT`
 
-Allow HTTP connections to port 80 - 
+#### Allow HTTP connections to port 80
 
 `iptables -A INPUT -p tcp --dport 80 -j ACCEPT`
 
-Drop any other connections (Important to have as last rule!) -
+#### Drop any other connections (Important to have as last rule!)
 
 `iptables -A INPUT -j DROP`
 
-If on VPS, insert this as first rule for the `lo` loopback interface -
+#### If on VPS, insert this as first rule for the `lo` loopback interface
 
 `iptables -I INPUT 1 -i lo -j ACCEPT`
 
-### Saving rules
+### Save
 
-Output to a file -
+#### Output to a file
 
 `iptables-save > rules.fw`
 
-### Restoring rules
+### Restore
 
-Input from a file -
+#### Input from a file
 
 `iptables-restore < rules.fw`

@@ -1,4 +1,4 @@
-## Example lines
+## Example usages
 
 ### Search a `man` page
 

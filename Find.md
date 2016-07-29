@@ -1,11 +1,13 @@
-## Example lines
+## Example usages
 
-`find . -size +500000 -print` - find any file above 500mb.
+### Find any file above 500MB
 
-OR
+`find . -size +500M -print`
 
-`find . -size +500M -print` - same thing.
+### Find any file above 2GB
 
-`find . -size +2G -print` - find any file above 2GB.
+`find . -size +2G -print`
 
-`for f in `find . -size +5M`; do ls -la $f || break; done` - find any file above 5MB and run `ls -la` on it with a for loop.
+### Find any file above 5MB and loop over results
+
+`for f in `find . -size +5M`; do ls -la $f || break; done`

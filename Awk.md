@@ -6,7 +6,7 @@ Print entire line - `awk '{print $0}'`
 
 `$1` is the first field before the next space. Each consecutive number (or variable) is the next field in the line.
 
-awk uses whitespace as a delimiter to seperate fields.
+`awk` uses whitespace as a delimiter to seperate fields.
 
 ### `$NF` variable
 
@@ -18,16 +18,16 @@ Example -
 
 will output `just this`
 
-## Example lines
+## Example usages
 
-### Show accepted SSH connections from log -
+### Show accepted SSH connections from log
 
 `sudo grep -w 'sshd' /var/log/auth.log | grep -w 'Accepted' | awk '{ print "User: "$9 " Time: "$1 " "$2 " "$3 }'`
 
-### Use colon (:) instead of whitespace as delimiter -
+### Use colon (:) instead of whitespace as delimiter
 
 `awk -F ':' '{ print $1 $2 }' file.txt`
 
-### Print directory names and sizes and format nicely -
+### Print directory names and sizes and format nicely
 
 `du -hd 1 | sort -nr | awk -F './' '{ print "Folder: "$2" \nSize: "$1 }'`
