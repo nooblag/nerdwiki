@@ -1,6 +1,4 @@
-## Commands
-
-### Creating a new repo
+## Creating a new repository
 
 `mkdir newrepo`
 
@@ -10,73 +8,67 @@
 
 `touch README.md`
 
-`git add .` (to add all files in directory to index)
+`git add .` (to add all files in current directory to index)
 
 `git commit -m 'Initial commit.'`
 
-### Branches
+## Branching
 
-#### Checking out a new branch
+### Check out a new branch
 
-`git checkout -b development`
+`git checkout -b develop`
 
-#### Add all files, then commit changes
+Add all files, then commit changes -
 
 `git add .`
 
-`git commit -m 'Added files to development branch.'`
+`git commit -m 'Added files to develop branch.'`
 
-#### List all branches
+### List all branches
 
 `git branch`
 
-#### Change branches
+### Change branches
 
-`git checkout master` (or whatever branch you want)
+`git checkout NAME_OF_BRANCH`
 
-#### Deleting branches
+### Delete branch
 
-`git branch -d nameOfBranch`
+`git branch -d NAME_OF_BRANCH`
 
-##### Delete remote branch
+### Delete remote branch
 
-`git push origin --delete nameOfBranch`
+`git push origin --delete NAME_OF_BRANCH`
 
-### Merging
+## Merging
 
-Merge branches (this example is merging development branch with master branch, make sure you've checked out the master branch first) -
+Merge branches (this example merges `develop` branch with the current working branch) -
 
-`git merge development`
+`git merge develop`
 
-#### Squash
+### Squash
 
 Merge a branch as one commit.
 
-#### Example workflow
-
-Working on example branch `dev`
+Working on example branch `develop`
 
 `git checkout master`
 
-`git merge --squash dev`
+`git merge --squash develop`
 
-This will present editor to allow you to enter a commit message that includes all commit messages for the `dev` branch -
+This will present editor to allow you to enter a commit message that includes all commit messages for the `develop` branch -
 
 `git commit`
 
-Or, this will just use your commit message without the messages from `dev` branch - 
+Or, this will just use your commit message without the messages from `develop` branch -
 
 `git commit -m "Your commit message"`
 
-### Cloning
+## Cloning
 
-Make sure you're not trying to clone a branch on the remote server that is already checked out, otherwise you'll get an error.
+`git clone ssh://user@server.org:/git/repository NAME_OF_BRANCH`
 
-**NOTE:** This dosen't matter if cloning a bare repo.
-
-`git clone ssh://user@loe.org:/git/repo nameofbranch`
-
-#### Make changes, then push back to server
+### Make changes, then push back to server
 
 `git add .`
 
@@ -84,23 +76,19 @@ Make sure you're not trying to clone a branch on the remote server that is alrea
 
 `git push`
 
-Or you could `rsync` all files between servers, then init a git repo in the directory holding the files. Then push any changes to a new branch on the remote server -
+## Log
 
-`git push user@loe.org:/git/repo -b newbranch`
-
-### Git log
-
-Print past commits - 
+### Print past commits
 
 `git log`
 
-Print a single line for each past commit -
+### Print a single line for each past commit
 
 `git log --pretty=oneline`
 
-### Checkout specific commit
+## Checkout specific commit
 
-#### Example workflow
+### Example workflow
 
 Use `git log` to find a specific commit -
 
@@ -110,7 +98,7 @@ Use `git log` to find a specific commit -
 
 	    Added Irssi.
 
-To checkout that commit, `checkout` using the commit hash  -
+To checkout that commit, `checkout` using the commit hash -
 
 `git checkout ba6af9e85675a974917a86488bc81fcd3252d1a8`
 
@@ -118,31 +106,57 @@ Or just using the first 4 characters (or however many characters you want) -
 
 `git checkout ba6a`
 
-### assume-unchanged
+## `assume-unchanged`
 
-Mark a file so git will temporarily ignore changes to it -
+### Mark a file so git will temporarily ignore changes to it
 
 `git update-index --assume-unchanged nameOfFile.txt`
 
-To undo - 
+### Undo
 
 `git update-index --no-assume-unchanged nameOfFile.txt`
 
-List files. Those that are prefixed with a lowercase `h` are marked as `assume-unchanged`  -
+### List marked files. Those that are prefixed with a lowercase `h` are marked as `assume-unchanged`
 
 `git ls-files -v`
 
-Or, use this to list only those marked as `assume-unchanged` - 
+### Or, use this to list only those marked as `assume-unchanged`
 
 `git ls-files -v | grep "^[[:lower:]]"`
 
-### Misc commands
+## Stashing
 
-#### Undo unstaged changes to files
+### Save the changes you have made without commiting them
+
+`git stash`
+
+### List of your stash
+
+`git stash list`
+
+### Bring back most recent stash to current branch
+
+`git stash apply`
+
+### Bring back a specific stash
+
+`git stash apply @{2}`
+
+### Bring back the most recent stash and immediately `drop` the stash
+
+`git stash pop`
+
+### Drop specific stash
+
+`git stash drop stash@{2}`
+
+## Misc commands
+
+### Undo unstaged changes to files
 
 `git checkout .`
 
-#### Add new files and auto `rm` deleted files from staging
+### Add new files and auto `rm` deleted files from staging
 
 `git add -A`
 
@@ -150,11 +164,11 @@ or
 
 `git add -u`
 
-#### Revert to a specific commit and update commit message with info about the revert
+### Revert to a specific commit and update commit message with info about the revert
 
 `git revert 93b1`
 
-#### Misc - to edit and sort
+### Misc - to edit and sort
 
 `git bundle create some file HEAD`
 
@@ -163,20 +177,6 @@ or
 `git apply < my.patch`
 
 `git reset --hard`
-
-### git stash
-
-`git stash` - save the changes you have made without commiting them
-
-`git stash list` - list of your stash
-
-`git stash apply` - bring back most recent stash to current branch
-
-`git stash apply @{2}` - bring back a specific stash
-
-`git stash pop` - bring back the most recent stash and immediately `drop` the stash
-
-`git stash drop stash@{2}` - drop specific stash
 
 ## GitHub
 
@@ -236,11 +236,11 @@ Download gitolite source -
 
 `git clone git://github.com/sitaramc/gitolite`
 
-Install gitolite - 
+Install gitolite -
 
 `gitolite/src/gl-system-install`
 
-Add bin to PATH in ~/.bashrc (or similar) - 
+Add bin to PATH in ~/.bashrc (or similar) -
 
 `PATH=/home/git/bin:$PATH`
 
