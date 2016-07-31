@@ -18,3 +18,14 @@ __NOTE__: using [Vagrant](https://www.vagrantup.com/).
 2. Install [Node.js](http://nodejs.org/) version `4.4.7`: `nvm install 4.4.7`
 3. Set default Node.js version: `nvm use 4.4.7 --default`
 4. In Jenkins, use full path to `npm`: `/home/vagrant/.nvm/versions/node/v4.4.7/bin/npm`
+
+#### Install MySQL
+
+__NOTE__: using [Vagrant](https://www.vagrantup.com/).
+
+1. Edit `/etc/apt/sources.list`:
+        deb http://packages.dotdeb.org jessie all
+        deb-src http://packages.dotdeb.org jessie all
+2. Add [Dotdeb](https://www.dotdeb.org/instructions/) repo keys: `wget https://www.dotdeb.org/dotdeb.gpg && sudo apt-key add dotdeb.gpg`
+3. Update sources: `sudo apt-get update`
+4. Install [MySQL](https://www.mysql.com/): `sudo apt-get install mysql-server`
