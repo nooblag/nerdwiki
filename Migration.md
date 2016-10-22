@@ -408,4 +408,24 @@ An example of crontab. First runs script to clean the homepage cache every 5 min
 13 19 * * * cronic find /location/of/backup/*.tar.gz -mtime +14 -delete
 ```
 
+### Apticron
+Have [e-mail sent out when security updates are pending](https://debian-administration.org/article/491/Automatic_package_update_nagging_with_apticron).
+
+`apt-get install apticron`
+
 ---
+
+## Monitoring bandwidth
+Some [good tools to monitor bandwidth](http://www.binarytides.com/linux-commands-monitor-network/):
+
+`iftop` does OK job of showing connections and cumulative output.
+
+`slurm -s -i eth0` is probably best for stats and keeps track of packets sent/recieved in MB.
+
+`service vnstat status` background daemon for logging, ok.
+
+`speedometer -r eth0 -t eth0` best graphs.
+
+---
+
+##
