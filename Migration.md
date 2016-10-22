@@ -415,16 +415,20 @@ Have [e-mail sent out when security updates are pending](https://debian-administ
 
 ---
 
-## Monitoring bandwidth
-Some [good tools to monitor bandwidth](http://www.binarytides.com/linux-commands-monitor-network/):
+## Monitoring tools
+Some [good tools to monitor bandwidth](http://www.binarytides.com/linux-commands-monitor-network/) and disk:
 
-`iftop` does OK job of showing connections and cumulative output.
+`iftop` does OK job of showing network connections and cumulative output.
 
-`slurm -s -i eth0` is probably best for stats and keeps track of packets sent/recieved in MB.
+`slurm -s -i eth0` is probably best for network stats and keeps track of packets sent/recieved in MB.
 
-`service vnstat status` background daemon for logging, ok.
+`service vnstat status` background daemon for network logging, ok.
 
-`speedometer -r eth0 -t eth0` best graphs.
+`speedometer -r eth0 -t eth0` best graphs for network.
+
+`iotop` for disk I/O, obvs.
+
+`apt-get install iftop iotop htop slurm vnstat`
 
 ---
 
