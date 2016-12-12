@@ -3,6 +3,9 @@ Operations for disk space, etc.
 
 ## File size
 
+#### Show usage of all disks, human readable numbers
+`df -h`
+
 #### How to find total size on disk of certain filetypes, recursive.
 
 In this case, total file size in GB of MP4 files by using combo of *find*, *du* and *awk*:
