@@ -15,3 +15,15 @@ In this case, total file size in GB of MP4 files by using combo of *find*, *du* 
 `find -name "*.mp4" -exec du -b {} \; | awk 'BEGIN{total=0}{total=total+$1}END{print total}'`
 
 *"The -exec option of find command executes a simple command with {} as the file found by find. du -b displays the size of the file in bytes. The awk command initializes a variable at 0 and get the size of each file to display the total at the end of the command."*
+
+## Swappiness
+
+`echo "2000" > /proc/sys/vm/vfs_cache_pressure`
+
+*vfs_cache_pressure*
+Controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects.
+
+At the default value of vfs_cache_pressure=100 the kernel will attempt to reclaim dentries and inodes at a "fair" rate with respect to pagecache and swapcache reclaim. Decreasing vfs_cache_pressure causes the kernel to prefer to retain dentry and inode caches. When vfs_cache_pressure=0, the kernel will never reclaim dentries and inodes due to memory pressure and this can easily lead to out-of-memory conditions. Increasing vfs_cache_pressure beyond 100 causes the kernel to prefer to reclaim dentries and inodes.
+
+Also helpful:
+https://unix.stackexchange.com/questions/30286/can-i-configure-my-linux-system-for-more-aggressive-file-system-caching
