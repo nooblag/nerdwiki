@@ -18,12 +18,13 @@ In this case, total file size in GB of MP4 files by using combo of *find*, *du* 
 
 ## Swappiness
 
-`echo "2000" > /proc/sys/vm/vfs_cache_pressure`
+Set system to prefer swapping file data over application code (this does not matter if you have enough RAM to keep whole filesystem and all the application code and all virtual memory allocated by applications in RAM). This reduces latency for swapping between different applications over latency for accessing big files from a single application:
+
+`echo 15 > /proc/sys/vm/swappiness`
 
 *vfs_cache_pressure*
 Controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects.
 
 At the default value of vfs_cache_pressure=100 the kernel will attempt to reclaim dentries and inodes at a "fair" rate with respect to pagecache and swapcache reclaim. Decreasing vfs_cache_pressure causes the kernel to prefer to retain dentry and inode caches. When vfs_cache_pressure=0, the kernel will never reclaim dentries and inodes due to memory pressure and this can easily lead to out-of-memory conditions. Increasing vfs_cache_pressure beyond 100 causes the kernel to prefer to reclaim dentries and inodes.
 
-Also helpful:
 https://unix.stackexchange.com/questions/30286/can-i-configure-my-linux-system-for-more-aggressive-file-system-caching
