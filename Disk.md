@@ -18,9 +18,10 @@ In this case, total file size in GB of MP4 files by using combo of *find*, *du* 
 
 ## Swappiness
 
-Set system to prefer swapping file data over application code (this does not matter if you have enough RAM to keep whole filesystem and all the application code and all virtual memory allocated by applications in RAM). This reduces latency for swapping between different applications over latency for accessing big files from a single application:
+`echo 90 > /proc/sys/vm/swappiness`
 
-`echo 15 > /proc/sys/vm/swappiness`
+If you prefer to keep applications nearly always in RAM you could set this to 1. If you set this to zero, kernel will not swap at all unless absolutely necessary to avoid Out Of Memory. If you were memory limited and working with big files (e.g. HD video editing), then it might make sense to set this close to 100.
+
 
 *vfs_cache_pressure*
 Controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects.
