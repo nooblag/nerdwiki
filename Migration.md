@@ -225,6 +225,9 @@ Some info [here](http://awstats.sourceforge.net/docs/awstats_faq.html#ROTATE), b
 #### Install IP and GeoIPFree plugins for awstats
 `apt-get install libnet-ip-perl libgeo-ipfree-perl`
 
+#### Awstats also needs [FCGIWrap for nginx](https://www.nginx.com/resources/wiki/start/topics/examples/fcgiwrap/)
+`apt-get install fcgiwrap`
+
 #### Working?
 Check in browser to see if all is working and awstats does dynamic compile by clicking on the "Update now" link.
 
