@@ -11,6 +11,9 @@ OR
 
 `for f in 'find . -size +5M'; do ls -la $f || break; done` - find any file above 5MB and run `ls -la` on it with a for loop.
 
+### Find text inside a file
+`grep -r 'text goes here' path_goes_here`
+
 # Replace
 Combo of `find` and `sed` to find and replace a string inside files, where *.ext* is type of files you're targeting, and *FOO* is replaced by *BAR*:
 
