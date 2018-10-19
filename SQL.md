@@ -18,6 +18,9 @@
 
 `GRANT ALL PRIVILEGES ON nameOfDatabase.* TO 'newUser'@'localhost' WITH GRANT OPTION;`
 
+### Work with certain database
+`USE nameOfDatabase;`
+
 ### Insert a row into a table
 
 `INSERT INTO nameOfTable (nameOfColumn1, nameOfColumn2) VALUES ("value1", "value2");`
