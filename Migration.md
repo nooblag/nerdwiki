@@ -168,7 +168,7 @@ Wipe out all other destinations where mail should be accepted. [Enter]
 Don't relay mail. [Enter]
 
 #### Working?
-`mail -s Test address@domain.com < "This is a test."`
+`echo "Testing 1, 2, 3..." | mail -s Testing test@test.com`
 
 #### Emails from broken crontabs
 Check out `cd /etc/cron.d; ls -la` and may need to clean those files up or simply del them.
