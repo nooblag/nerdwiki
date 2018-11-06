@@ -25,12 +25,16 @@ In this case, total file size in GB of MP4 files by using combo of *find*, *du* 
 
 ## Swappiness
 
-`echo 90 > /proc/sys/vm/swappiness`
+`echo 1 > /proc/sys/vm/swappiness`
 
 If you prefer to keep applications nearly always in RAM you could set this to 1. If you set this to zero, kernel will not swap at all unless absolutely necessary to avoid Out Of Memory. If you were memory limited and working with big files (e.g. HD video editing), then it might make sense to set this close to 100.
 
+`echo 1 > /proc/sys/vm/vfs_cache_pressure`
 
-*vfs_cache_pressure*
+Setting *vfs_cache_pressure* to low value makes sense because in most cases, the kernel needs to know the directory structure before it can use file contents from the cache and flushing the directory cache too soon will make the file cache next to worthless. Consider going all the way down to 1 with this setting if you have lots of small files (my system has around 150K 10 megapixel photos and counts as "lots of small files" system). Never set it to zero or directory structure is always kept in memory even if the system is running out of the memory. Setting this to big value is sensible only if you have only a few big files that are constantly being re-read (again, HD video editing without enough RAM would be an example case). Official kernel documentation says that "increasing vfs_cache_pressure significantly beyond 100 may have negative performance impact".
+
+
+**vfs_cache_pressure**
 Controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects.
 
 At the default value of vfs_cache_pressure=100 the kernel will attempt to reclaim dentries and inodes at a "fair" rate with respect to pagecache and swapcache reclaim. Decreasing vfs_cache_pressure causes the kernel to prefer to retain dentry and inode caches. When vfs_cache_pressure=0, the kernel will never reclaim dentries and inodes due to memory pressure and this can easily lead to out-of-memory conditions. Increasing vfs_cache_pressure beyond 100 causes the kernel to prefer to reclaim dentries and inodes.
