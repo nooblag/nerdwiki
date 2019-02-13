@@ -80,9 +80,12 @@ You need the ~ operator to enable regex matching, and since you only need to mat
 	location ~ ^/events/?$
 	         ^ ^         ^ 
 
-The ^/events/?$ pattern matches:
+The `^/events/?$` pattern matches:
 
 `^` - start of input
+
 `/events` - a literal substring /events
+
 `/?` - one or zero / symbols
+
 `$` - end of input.
