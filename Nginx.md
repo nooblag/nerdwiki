@@ -61,3 +61,28 @@ Finally, restart nginx with `/etc/init.d/nginx restart`
 ## Errors and workarounds
 
 Ensure ownership on `/var/www` is correct - `chown www-data:www-data /var/www`
+
+
+
+
+##NGINX location rewrite URL with or without trailing slash
+
+This location block:
+
+	location = /events {
+	    rewrite ^ https://totallydifferenturl.com;
+	}
+
+This successfully redirects from mywebsite/events, but I want this block to also handle mywebsite/events/.
+
+You need the ~ operator to enable regex matching, and since you only need to match website/events or website/events/ as full strings, you will need anchors ^ and $ around the pattern:
+
+	location ~ ^/events/?$
+	         ^ ^         ^ 
+
+The ^/events/?$ pattern matches:
+
+`^` - start of input
+`/events` - a literal substring /events
+`/?` - one or zero / symbols
+`$` - end of input.
