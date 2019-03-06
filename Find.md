@@ -6,6 +6,10 @@
 
 `find /path -iname "*.wildcard" | less`
 
+### Find a directory
+
+``find /path -name DIRNAME -type d``
+
 ### Conditioning
 
 Find files in the "travelphotos" directory that are greater than 200 kilobytes in size but do not have "2015" anywhere in the file name.
