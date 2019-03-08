@@ -28,6 +28,20 @@ OR
 
 Some more good explanatory info and exmaples [here](https://www.howtogeek.com/112674/how-to-find-files-and-folders-in-linux-using-the-command-line/).
 
+#### Find files that haven't been modified for more than 2 minutes.
+
+`find /path -mmin +2 -type f -print`
+
+`find /path -maxdepth 1 -not -name ".htaccess" -not -name ".someotherfile" -mmin +2 -type f -print`
+
+Using `maxdepth 1` means only in this folder, don't specify maxdepth to use full recursive. `-not -name` ignore certain files
+
+Using `exec` at end instead of `-print` to do an action to matches, for example, to move matched files to another directory.
+
+`find /path -maxdepth 1 -not -name ".htaccess" -mmin +2 -type f -exec mv {} /home/thoughtm/public_html/etc/upload.democraticmediaplease.net/server/php/files/completed/ \;`
+
+After `-exec` is the command to run. `{}` represents the file matched and `\;` concludes the command string.
+
 
 ### Find text inside a file
 `grep -r 'text goes here' path_goes_here`
