@@ -38,7 +38,7 @@ Using `maxdepth 1` means only in this folder, don't specify maxdepth to use full
 
 Using `exec` at end instead of `-print` to do an action to matches, for example, to move matched files to another directory.
 
-`find /path -maxdepth 1 -not -name ".htaccess" -mmin +2 -type f -exec mv {} /home/thoughtm/public_html/etc/upload.democraticmediaplease.net/server/php/files/completed/ \;`
+`find /path -maxdepth 1 -not -name ".htaccess" -mmin +2 -type f -exec mv {} /path/matches/ \;`
 
 After `-exec` is the command to run. `{}` represents the file matched and `\;` concludes the command string.
 
