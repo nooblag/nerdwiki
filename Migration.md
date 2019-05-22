@@ -425,11 +425,13 @@ Some [good tools to monitor bandwidth](http://www.binarytides.com/linux-commands
 
 `slurm -s -i eth0` is probably best for network stats and keeps track of packets sent/recieved in MB.
 
-`service vnstat status` background daemon for network logging, ok.
-
 `speedometer -r eth0 -t eth0` best graphs for network.
 
-`iotop` for disk I/O, obvs.
+`bmon` another network monitor with graphs
+
+`iotop` for disk I/O
+
+`service vnstat status` background daemon for network logging, ok.
 
 `apt-get install iftop iotop htop slurm vnstat`
 
