@@ -17,9 +17,3 @@ Only one pass is needed.
 ## dcfldd
 
 Improved version of `dd`. Includes progress bar, among other things.
-
-## iPhone
-
-### Backup a jailbroken iPhone -
-
-`ssh root@jphone dd if=/dev/rdisk0 bs=1M | dd of=iphonebak.img`
