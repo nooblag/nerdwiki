@@ -1,5 +1,11 @@
-#### Only upload MP4s
-`rsync -varhPz --preallocate --include="*/" --include="*.mp4" --exclude="*" "/media/User/dir/to/cdn/" root@SERVERIP:/var/www/html/`
+### Grab text files only
+Brackets iterate, to capture extensions both in caps or lowercase
 
-#### Ignore groups, permissions, 
+`rsync -vahP --include="*/" --include="*.[Tt][Xx][Tt]" --exclude="*" /from/ /to/`
+
+
+#### Only upload MP4s:
+`rsync -vahP --preallocate --include="*/" --include="*.mp4" --exclude="*" /from/ /to/`
+
+### Ignore groups, permissions:
 `rsync -vahP --no-perms --no-owner --no-group --stats`
