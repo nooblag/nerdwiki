@@ -42,4 +42,15 @@ At the default value of vfs_cache_pressure=100 the kernel will attempt to reclai
 By setting vfs_cache_pressure lower (maybe 1), it will favor caching files instead of keeping application data in RAM.
 
 https://unix.stackexchange.com/questions/30286/can-i-configure-my-linux-system-for-more-aggressive-file-system-caching
+
 https://www.kernel.org/doc/Documentation/sysctl/vm.txt
+
+## Handy disk cache tool?
+
+`vmtouch` - the Virtual Memory Toucher.
+
+Portable file system cache diagnostics and control
+
+https://hoytech.com/vmtouch/
+
+https://github.com/hoytech/vmtouch
