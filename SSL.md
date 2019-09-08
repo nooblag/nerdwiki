@@ -16,15 +16,15 @@ Common Name is FQDN *.app_name.com
 ```sh
 openssl genrsa 2048 > app_name-wildcard.key
 
-openssl req -new -x509 -nodes -sha1 -days 3650 -key app_name-wildcard.key > app_name-wildcard.cert
+openssl req -new -x509 -nodes -sha1 -days 3650 -key app_name-wildcard.key > app_name-wildcard.crt
 
 # Common Name (eg, your name or your server's hostname) []:*.app_name.com
 
-openssl x509 -noout -fingerprint -text < app_name-wildcard.cert > app_name-wildcard.info
+openssl x509 -noout -fingerprint -text < app_name-wildcard.crt > app_name-wildcard.info
 
-cat app_name-wildcard.cert app_name-wildcard.key > app_name-wildcard.pem
+cat app_name-wildcard.crt app_name-wildcard.key > app_name-wildcard.pem
 
-chmod 644 app_name-wildcard.key app_name-wildcard.pem
+chmod 640 app_name-wildcard.key app_name-wildcard.pem
 ```
 
 *example nginx conf below*
