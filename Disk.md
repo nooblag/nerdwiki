@@ -41,9 +41,22 @@ At the default value of vfs_cache_pressure=100 the kernel will attempt to reclai
 
 By setting vfs_cache_pressure lower (maybe 1), it will favor caching files instead of keeping application data in RAM.
 
+To change the system swappiness value, open `/etc/sysctl.conf` as root. Then, change or add this line to the file:
+
+`vm.swappiness = 10`
+
+Reboot for the change to take effect.
+
+You can change the value while your system is still running with:
+
+`sysctl vm.swappiness=10`
+
+
 https://unix.stackexchange.com/questions/30286/can-i-configure-my-linux-system-for-more-aggressive-file-system-caching
 
 https://www.kernel.org/doc/Documentation/sysctl/vm.txt
+
+https://askubuntu.com/questions/103915/how-do-i-configure-swappiness
 
 ## Handy disk cache tool?
 
