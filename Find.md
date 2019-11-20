@@ -6,6 +6,21 @@
 
 `find /path -iname "*.wildcard" | less`
 
+Or
+
+`find . -name index.php -type f`
+
+If you want to search for files having names say findex.php, index.phpfoo, index.php you need to use:
+
+`find . -name '*index.php*' -type f`
+
+Where * is a glob pattern meaning zero or more characters.
+
+On the other hand if you want to look in the current directory only :
+
+`find . -maxdepth 1 -name '*index.php*' -type f`
+
+
 ### Find a directory
 
 ``find /path -name DIRNAME -type d``
