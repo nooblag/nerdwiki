@@ -59,7 +59,14 @@ After `-exec` is the command to run. `{}` represents the file matched and `\;` c
 
 
 ### Find text inside a file
+
 `grep -r 'text goes here' path_goes_here`
+
+## Find available system commands
+`compgen -c` will list all the commands you could run.
+
+`compgen -c | sort` will show list in alphabetical order
+
 
 # Replace
 Combo of `find` and `sed` to find and replace a string inside files, where *.ext* is type of files you're targeting, and *FOO* is replaced by *BAR*:
