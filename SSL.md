@@ -9,6 +9,10 @@ Common Name is FQDN *.app_name.com
 
 `openssl req -newkey rsa:2048 -nodes -keyout app_name.key -x509 -days 999 -out app_name.crt`
 
+Nice one-liner (5 years = ~1825 days):
+
+`sudo openssl req -x509 -nodes -days 1825 -newkey rsa:2048 -out /etc/apache2/ssl/app_name.crt -keyout /etc/apache2/ssl/app_name.key`
+
 
 # Variation method, self signed sert for wildcard, 3650 days
 *Swap out app_name for purpose*
