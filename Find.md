@@ -59,7 +59,7 @@ After `-exec` is the command to run. `{}` represents the file matched and `\;` c
 
 #### Find error_log/readme/license/changelog.txt files in Wordpress install and remove them
 
-`find ~/public_html/ -type f \( -iname "error_log" -or -iname "readme.*" -or -iname "license*" -or -iname "changelog*" ! -iname "*.php" \) -print;`
+`find ~/public_html/ -type f \( -iname "error_log" -or -iname "readme.*" ! -iname "*.php" -or -iname "license.*" ! -iname "*.php" -or -iname "changelog.*" ! -iname "*.php" \) -print;`
 
 
 ### Find text inside a file
