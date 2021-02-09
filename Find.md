@@ -20,6 +20,10 @@ On the other hand if you want to look in the current directory only :
 
 `find . -maxdepth 1 -name '*index.php*' -type f`
 
+Exclude a path from search:
+
+`find -name "*.js" -not -path "./directory/*"`
+
 
 ### Find a directory
 
