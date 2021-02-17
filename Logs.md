@@ -56,3 +56,7 @@ This will only create main reports.
 ### Seach logs for SSH connections
 
 `grep -w 'sshd' /var/log/auth.log | grep -w 'Accepted' | awk '{ print $0 }'`
+
+## View failed login attempts
+
+`last web -f /var/log/btmp -wxaF`
