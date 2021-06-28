@@ -6,7 +6,7 @@
 
 # Modify user's sudo permissions
 
-`visudo`
+`sudo visudo`
 
 this opens `/etc/sudoers` file
 
