@@ -9,70 +9,77 @@ HISTFILE=/dev/null
 
 # Add timestamp to prompt
 
-When did I run that command?
+"When did I run that command?"
 
-Modified from [@redandblack.io](http://redandblack.io/blog/2020/bash-prompt-with-updating-time/). Improved colours, and changed formatting preferences:
+Modified from [@redandblack.io](http://redandblack.io/blog/2020/bash-prompt-with-updating-time/). Improved colours, and changed formatting preferences.
+
+Thanks friends!
 
 ```
-DIRECTORY="\w"
-USER="\u"
-HOST="\h"
-DOUBLE_SPACE="  "
-NEWLINE="\n"
-NO_COLOUR="\e[00m"
-PRINTING_OFF="\["
-PRINTING_ON="\]"
-PROMPT_COLOUR="\e[0;33m"
-DIRECTORY_COLOUR="\e[1;34m"
-USER_HOST_COLOUR="\e[1;32m"
-PS1_PROMPT="\$"
-PS2_PROMPT=">"
-RESTORE_CURSOR_POSITION="\e[u"
-SAVE_CURSOR_POSITION="\e[s"
-SINGLE_SPACE=" "
-TIMESTAMP="\A"
-TIMESTAMP_PLACEHOLDER="--:--"
+Directory="\w"
+User="\u"
+Host="\h"
+DoubleSpace="  "
+SingleSpace=" "
+NewLine="\n"
+NoColour="\e[00m"
+PrintingOff="\["
+PrintingOn="\]"
+PromptColour="\e[0;33m"
+DirectoryColour="\e[1;34m"
+UserHostColour="\e[1;32m"
+PS1prompt="\$"
+PS2prompt=">"
+RestoreCursorPosition="\e[u"
+SaveCursorPosition="\e[s"
+Timestamp="\A"
+TimestampPlaceholder="--:--"
 
-move_cursor_to_start_of_ps1() {
-    command_rows=$(history 1 | wc -l)
-    if [ "$command_rows" -gt 1 ]; then
-        let vertical_movement=$command_rows+1
+MoveCursorToTimestampPlaceholder() {
+    CommandRows="$(history 1 | wc -l)"
+    if [[ "$CommandRows" -gt 1 ]]; then
+        VerticalMovement="$((CommandRows+1))"
     else
-        command=$(history 1 | sed 's/^\s*[0-9]*\s*//')
-        command_length=${#command}
-        ps1_prompt_length=${#PS1_PROMPT}
-        let total_length=$command_length+$ps1_prompt_length
-        let lines=$total_length/${COLUMNS}+1
-        let vertical_movement=$lines+1
+        Command="$(history 1 | sed 's/^\s*[0-9]*\s*//')"
+        CommandLength="${#Command}"
+        PS1promptLength="${#PS1prompt}"
+        TotalLength="$((CommandLength+PS1promptLength))"
+        Lines="$((TotalLength/COLUMNS+1))" # use environment variable
+        VerticalMovement="$((Lines+1))"
     fi
-    tput cuu $vertical_movement
+    tput cuu "$VerticalMovement"
 }
 
-PS0_ELEMENTS=(
-    "$SAVE_CURSOR_POSITION" "\$(move_cursor_to_start_of_ps1)"
-    "$PROMPT_COLOUR" "$TIMESTAMP" "$NO_COLOUR" "$RESTORE_CURSOR_POSITION"
+PS0elements=(
+    "$SaveCursorPosition" "\$(MoveCursorToTimestampPlaceholder)"
+        "$PromptColour" "$Timestamp" "$NoColour"
+        "$RestoreCursorPosition"
 )
-PS0=$(IFS=; echo "${PS0_ELEMENTS[*]}")
+# build the prompt using the layout of variables as above
+PS0="$(IFS=; echo "${PS0elements[*]}")"
 
-PS1_ELEMENTS=(
-    # Empty line after last command.
-    "$NEWLINE"
-    # First line of prompt.
-    "$PRINTING_OFF" "$PROMPT_COLOUR" "$PRINTING_ON"
-    "$TIMESTAMP_PLACEHOLDER" "$DOUBLE_SPACE" "$DIRECTORY_COLOUR" "$DIRECTORY" "$PRINTING_OFF"
-    "$NO_COLOUR" "$PRINTING_ON" "$NEWLINE"
-    # Second line of prompt.
-    "$PRINTING_OFF" "$USER_HOST_COLOUR" "$PRINTING_ON"
-    "$USER@$HOST" "$PRINTING_OFF" "$NO_COLOUR" "$PRINTING_ON" ":" "$PRINTING_OFF" "$PROMPT_COLOUR" "$PRINTING_ON" "$PS1_PROMPT"
-    "$SINGLE_SPACE" "$PRINTING_OFF" "$NO_COLOUR" "$PRINTING_ON"
+PS1elements=(
+    # insert a new line after last timestamp and command
+    "$NewLine"
+    # first line of prompt
+    "$PrintingOff" "$PromptColour" "$PrintingOn"
+    "$TimestampPlaceholder" "$DoubleSpace" "$DirectoryColour" "$Directory"
+        "$PrintingOff" "$NoColour" "$PrintingOn" "$NewLine"
+    # second line of prompt
+    "$PrintingOff" "$UserHostColour" "$PrintingOn"
+        "${User}@${Host}" "$PrintingOff" "$NoColour" "$PrintingOn" ':' "$PrintingOff" "$PromptColour" "$PrintingOn" "$PS1prompt" "$SingleSpace"
+        "$PrintingOff" "$NoColour" "$PrintingOn"
 )
-PS1=$(IFS=; echo "${PS1_ELEMENTS[*]}")
+# build the prompt using the layout of variables as above
+PS1="$(IFS=; echo "${PS1elements[*]}")"
 
-PS2_ELEMENTS=(
-    "$PRINTING_OFF" "$PROMPT_COLOUR" "$PRINTING_ON" "$PS2_PROMPT"
-    "$SINGLE_SPACE" "$PRINTING_OFF" "$NO_COLOUR" "$PRINTING_ON"
+PS2elements=(
+    "$PrintingOff" "$PromptColour" "$PrintingOn"
+        "$PS2prompt" "$SingleSpace"
+        "$PrintingOff" "$NoColour" "$PrintingOn"
 )
-PS2=$(IFS=; echo "${PS2_ELEMENTS[*]}")
+# build the prompt using the layout of variables as above
+PS2="$(IFS=; echo "${PS2elements[*]}")"
 
 shopt -s histverify
 ```
