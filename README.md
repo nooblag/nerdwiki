@@ -1,9 +1,7 @@
 ## nerdwiki
 
-Misc nerd gatherings.
+Misc nerd gatherings compiled over the decades!
 
-By Josh Lapham [josh@joshlapham.com]
-
-.. and jore sometimes puts stuff in too.
+By [Josh Lapham](josh@joshlapham.com) and [Jore](https://github.com/nooblag)
 
 License: Beerware
