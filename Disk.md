@@ -1,6 +1,17 @@
 # Disk stuff
 Operations for disk space, etc.
 
+## Disk Speed
+
+#### Test disk write speed
+
+Write 2,048 counts of 512k to test writing a 1GB file:
+
+`dd if=/dev/zero of=/tmp/speedtest.garbage bs=512k count=2048 oflag=direct`
+
+An average SSD speed is around 150MB/s.
+
+
 ## File size
 
 #### Show usage of all disks, human readable numbers
