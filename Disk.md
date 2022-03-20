@@ -11,6 +11,10 @@ Write 2,048 counts of 512k to test writing a 1GB file:
 
 An average SSD speed is around 150MB/s.
 
+One-liner of above that also cleans up test file:
+
+`temp="$(mktemp)" && dd if=/dev/zero of="${temp}" bs=512k count=2048 oflag=direct; rm "${temp}"`
+
 
 ## File size
 
