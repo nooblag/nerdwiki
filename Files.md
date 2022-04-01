@@ -25,3 +25,5 @@ Replace bracket with blank space in any filenames. Bracket needs to be escaped.
 `grep -v '^;' /etc/php/8.0/fpm/php.ini | grep -v '^$'`
 
 If needing '#' for comments, change `grep -v '^;'` to `grep -v '^#'`
+
+Pipe to `grep -v '^$'` removes blank lines
