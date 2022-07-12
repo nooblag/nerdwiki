@@ -38,3 +38,15 @@ Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig, /usr/bin/systemctl start, 
 If you want a user to have only permissions to run commands under the SERVICES alias, you need to have the following entry in the `/etc/sudoers` file
 
 `username            ALL = SERVICES`
+
+
+Another example:
+
+`sudo visudo`
+
+Specify specific commands that can be invoked without password:
+
+```
+# Allow specific users to apply software updates without password
+username  ALL=(ALL) NOPASSWD:/usr/bin/apt update, /usr/bin/apt full-upgrade, /usr/bin/apt autoremove
+```
