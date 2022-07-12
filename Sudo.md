@@ -39,6 +39,7 @@ If you want a user to have only permissions to run commands under the SERVICES a
 
 `username            ALL = SERVICES`
 
+---
 
 Another example:
 
