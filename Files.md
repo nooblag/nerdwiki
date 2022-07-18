@@ -20,6 +20,15 @@ Example:
 
 Replace bracket with blank space in any filenames. Bracket needs to be escaped.
 
+### Take Two
+
+https://stackoverflow.com/a/8417536
+
+`for i in *-doc-*.txt; do mv "$i" "${i/*-doc-/doc-}"; done`
+
+Where `${i/*-doc-/doc-}` replaces the first occurrence of `*-doc-` with `doc-`
+
+
 # Display contents of a file ignoring comments
 
 `grep -v '^;' /etc/php/8.0/fpm/php.ini | grep -v '^$'`
