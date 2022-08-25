@@ -1,4 +1,4 @@
-Note that sed does not write to a file, only echos the result. Pipe to another file to save result.
+Note that sed does not write to a file, only echos the result. Use `-i` "in place" to save the find/replace result to the file.
 
 ### Find and print
 
