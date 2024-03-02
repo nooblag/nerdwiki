@@ -76,9 +76,21 @@ After `-exec` is the command to run. `{}` represents the file matched and `\;` c
 `compgen -c | sort` will show list in alphabetical order
 
 
-# Replace
+# Do stuff
+
+### Replace
 Combo of `find` and `sed` to find and replace a string inside files, where *.ext* is type of files you're targeting, and *FOO* is replaced by *BAR*:
 
 `find . -type f -name '*.ext' -exec sed -i 's|FOO|BAR|g' {} \;`
 
 Could also use the `rpl` programme.
+
+---
+
+### Zip up directories into seperate archives
+`find . -mindepth 1 -maxdepth 1 -type d -exec zip -r '{}.zip' '{}' \;`
+
+Min depth is used to ignore the root path, maxdepth used to only list dirs in current path as zipping is recursive on each
+
+#### Traverse paths and zip each individual file found, putting the zip in its place in the tree
+`find . -type f -execdir zip '{}.zip' '{}' \;`
