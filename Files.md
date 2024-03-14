@@ -29,6 +29,18 @@ https://stackoverflow.com/a/8417536
 Where `${i/*-doc-/doc-}` replaces the first occurrence of `*-doc-` with `doc-`
 
 
+### A bash example
+
+Rename to clean up something `SOV.0123.4567.8910 Crap with spaces.pdf` to `SOV.0123.4567.8910.pdf`
+
+```
+for i in *; do
+  mv "${i}" "$(echo "${i}" | sed 's/\(SOV\.[[:digit:]]\{4\}\.[[:digit:]]\{4\}\.[[:digit:]]\{4\}\).*\(\..*\)/\1\2/g')"
+done
+```
+
+
+
 # Display contents of a file ignoring comments
 
 `grep -v '^;' /etc/php/8.0/fpm/php.ini | grep -v '^$'`
