@@ -48,3 +48,23 @@ done
 If needing '#' for comments, change `grep -v '^;'` to `grep -v '^#'`
 
 Pipe to `grep -v '^$'` removes blank lines
+
+
+# chattr
+
+Make file immutable/undeletable. This implies that the file can’t be modified in any way: it can’t be deleted or renamed. You can’t even create a link to it and no data can be written to the file as well.
+
+`sudo chattr +i FILE`
+
+Make it normal again
+
+`sudo chattr -i FILE`
+
+View attributes of existing:
+
+`lsattr FILE`
+
+Can do it recursive on a folder also:
+
+`sudo chattr +i -RV path/`
+
