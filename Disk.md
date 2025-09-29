@@ -82,3 +82,52 @@ Portable file system cache diagnostics and control
 https://hoytech.com/vmtouch/
 
 https://github.com/hoytech/vmtouch
+
+## badblocks
+
+To try a full destructive read/wrtie restore of a crappy disk, which tries a write/read check of everything, first find block size:
+
+`sudo -n blockdev --getbsz /dev/YYY`
+
+Then:
+
+`sudo badblocks -t random -w -s -v -b [blocksize] /dev/YYY | tee badblocks.txt`
+
+where
+
+`-t random` sets writing random bit patterns to the disk, instead of zeros etc
+
+`-w` write-mode **destructive**
+
+`-s` shows progress/status
+
+`-v` verbose
+
+`-b [blocksize]` valye from `blockdev --getbsz` above  !! important !!
+
+`/dev/YYY` device **triple check this!**
+
+and then pipe to `tee` to save output to file.
+
+The output can be used to try repair, if disk is ext4 etc, without having to do another read-only pass with fsck:
+
+`sudo e2fsck -l badblocks.txt -B [blocksize] /dev/YYY`
+
+--OR--
+
+It might be safer to get `e2fsck` to do a less intense badblocks check itself, but still may trigger more data loss, but can repair in same step:
+
+`sudo e2fsck -fcpvt /dev/YYY`
+
+where
+
+`-f` force
+
+`-c` is the badblocks readonly check
+
+`-p` automatically fix any problem
+
+`-v` verbose
+
+`-t` show timing stats
+
