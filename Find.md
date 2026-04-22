@@ -47,6 +47,15 @@ OR
 
 Some more good explanatory info and exmaples [here](https://www.howtogeek.com/112674/how-to-find-files-and-folders-in-linux-using-the-command-line/).
 
+#### chmod directories, excluding some
+
+`find /path/to/root \( -path /path/to/root/dir1 -o -path /path/to/root/dir2 \) -prune -o -type d -exec chmod 755 {} +`
+
+and for files too:
+
+`find /path/to/root \( -path /path/to/root/dir1 -o -path /path/to/root/dir2 \) -prune -o -type f -exec chmod 644 {} +`
+
+
 #### Find files that haven't been modified for more than 2 minutes.
 
 `find /path -mmin +2 -type f -print`
