@@ -68,3 +68,14 @@ Can do it recursive on a folder also:
 
 `sudo chattr +i -RV path/`
 
+
+
+# Show PHP config without line comments
+
+`grep -Ev '^\s*(;|$)' /etc/php/8.3/fpm/php.ini`
+
+#### compare two configs redirect stdin as above, trim comments from configs, show only real differing set lines
+
+```
+diff --suppress-common-lines --side-by-side <(grep -Ev '^\s*(;|$)' /etc/php/8.2/fpm/php.ini) <(grep -Ev '^\s*(;|$)' /etc/php/8.4/fpm/php.ini)
+```
